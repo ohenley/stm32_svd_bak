@@ -2,7 +2,7 @@ with "config/stm32_svd_config.gpr";
 project Stm32_Svd is
 
    for Target use "arm-eabi";
-   for Runtime ("Ada") use Stm32_Svd_Config.Runtime & "-" & Stm32_Svd_Config.Board";
+   for Runtime ("Ada") use Stm32_Svd_Config.Runtime & "-" & Stm32_Svd_Config.Board;
 
    for Library_Name use "Stm32_Svd";
    for Library_Version use Project'Library_Name & ".so." & Stm32_Svd_Config.Crate_Version;
