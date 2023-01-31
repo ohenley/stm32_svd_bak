@@ -14,9 +14,10 @@ project Stm32_Svd is
    for Library_Version use Project'Library_Name & ".so." & Stm32_Svd_Config.Crate_Version;
 
    SVD_Src_Dirs := ();
-   case Stm32_Config_Config.Board is
-      when "stm32f429disco" =>
-         SVD_Src_Dirs := SVD_Src_Dirs & ("src/stm32f429x");
+   case Stm32_Config_Config.Mcu is
+      when "stm32f429x" =>
+         SVD_Src_Dirs := SVD_Src_Dirs & ("src/stm32f4/stm32f429x", 
+                                         "src/stm32f4");
       when others => null;
    end case;
 
