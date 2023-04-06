@@ -19,7 +19,8 @@ project Stm32_Svd is
          SVD_Src_Dirs := SVD_Src_Dirs & ("src/stm32f4/stm32f429x", 
                                          "src/stm32f4");
       when "stm32f407" =>
-         SVD_Src_Dirs := SVD_Src_Dirs & ("src/stm32f4");
+         SVD_Src_Dirs := SVD_Src_Dirs & ("src/stm32f4/stm32f40x",
+                                         "src/stm32f4");
       when others => null;
    end case;
 
