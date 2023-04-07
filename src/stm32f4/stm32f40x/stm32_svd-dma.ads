@@ -4,7 +4,7 @@ pragma Restrictions (No_Elaboration_Code);
 pragma Ada_2012;
 pragma Style_Checks (Off);
 
-with HAL;
+with Beta_Types; use Beta_Types;
 with System;
 
 package STM32_SVD.DMA is
@@ -41,7 +41,7 @@ package STM32_SVD.DMA is
       --  Read-only. Stream x transfer complete interrupt flag (x = 3..0)
       TCIF1          : Boolean;
       --  unspecified
-      Reserved_12_15 : HAL.UInt4;
+      Reserved_12_15 : UInt4;
       --  Read-only. Stream x FIFO error interrupt flag (x=3..0)
       FEIF2          : Boolean;
       --  unspecified
@@ -67,7 +67,7 @@ package STM32_SVD.DMA is
       --  Read-only. Stream x transfer complete interrupt flag (x = 3..0)
       TCIF3          : Boolean;
       --  unspecified
-      Reserved_28_31 : HAL.UInt4;
+      Reserved_28_31 : UInt4;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -128,7 +128,7 @@ package STM32_SVD.DMA is
       --  Read-only. Stream x transfer complete interrupt flag (x=7..4)
       TCIF5          : Boolean;
       --  unspecified
-      Reserved_12_15 : HAL.UInt4;
+      Reserved_12_15 : UInt4;
       --  Read-only. Stream x FIFO error interrupt flag (x=7..4)
       FEIF6          : Boolean;
       --  unspecified
@@ -154,7 +154,7 @@ package STM32_SVD.DMA is
       --  Read-only. Stream x transfer complete interrupt flag (x=7..4)
       TCIF7          : Boolean;
       --  unspecified
-      Reserved_28_31 : HAL.UInt4;
+      Reserved_28_31 : UInt4;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -215,7 +215,7 @@ package STM32_SVD.DMA is
       --  Stream x clear transfer complete interrupt flag (x = 3..0)
       CTCIF1         : Boolean := False;
       --  unspecified
-      Reserved_12_15 : HAL.UInt4 := 16#0#;
+      Reserved_12_15 : UInt4 := 16#0#;
       --  Stream x clear FIFO error interrupt flag (x = 3..0)
       CFEIF2         : Boolean := False;
       --  unspecified
@@ -241,7 +241,7 @@ package STM32_SVD.DMA is
       --  Stream x clear transfer complete interrupt flag (x = 3..0)
       CTCIF3         : Boolean := False;
       --  unspecified
-      Reserved_28_31 : HAL.UInt4 := 16#0#;
+      Reserved_28_31 : UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -302,7 +302,7 @@ package STM32_SVD.DMA is
       --  Stream x clear transfer complete interrupt flag (x = 7..4)
       CTCIF5         : Boolean := False;
       --  unspecified
-      Reserved_12_15 : HAL.UInt4 := 16#0#;
+      Reserved_12_15 : UInt4 := 16#0#;
       --  Stream x clear FIFO error interrupt flag (x = 7..4)
       CFEIF6         : Boolean := False;
       --  unspecified
@@ -328,7 +328,7 @@ package STM32_SVD.DMA is
       --  Stream x clear transfer complete interrupt flag (x = 7..4)
       CTCIF7         : Boolean := False;
       --  unspecified
-      Reserved_28_31 : HAL.UInt4 := 16#0#;
+      Reserved_28_31 : UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -362,13 +362,13 @@ package STM32_SVD.DMA is
       Reserved_28_31 at 0 range 28 .. 31;
    end record;
 
-   subtype S0CR_DIR_Field is HAL.UInt2;
-   subtype S0CR_PSIZE_Field is HAL.UInt2;
-   subtype S0CR_MSIZE_Field is HAL.UInt2;
-   subtype S0CR_PL_Field is HAL.UInt2;
-   subtype S0CR_PBURST_Field is HAL.UInt2;
-   subtype S0CR_MBURST_Field is HAL.UInt2;
-   subtype S0CR_CHSEL_Field is HAL.UInt3;
+   subtype S0CR_DIR_Field is UInt2;
+   subtype S0CR_PSIZE_Field is UInt2;
+   subtype S0CR_MSIZE_Field is UInt2;
+   subtype S0CR_PL_Field is UInt2;
+   subtype S0CR_PBURST_Field is UInt2;
+   subtype S0CR_MBURST_Field is UInt2;
+   subtype S0CR_CHSEL_Field is UInt3;
 
    --  stream x configuration register
    type S0CR_Register is record
@@ -413,7 +413,7 @@ package STM32_SVD.DMA is
       --  Channel selection
       CHSEL          : S0CR_CHSEL_Field := 16#0#;
       --  unspecified
-      Reserved_28_31 : HAL.UInt4 := 16#0#;
+      Reserved_28_31 : UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -442,14 +442,14 @@ package STM32_SVD.DMA is
       Reserved_28_31 at 0 range 28 .. 31;
    end record;
 
-   subtype S0NDTR_NDT_Field is HAL.UInt16;
+   subtype S0NDTR_NDT_Field is UInt16;
 
    --  stream x number of data register
    type S0NDTR_Register is record
       --  Number of data items to transfer
       NDT            : S0NDTR_NDT_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -459,8 +459,8 @@ package STM32_SVD.DMA is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype S0FCR_FTH_Field is HAL.UInt2;
-   subtype S0FCR_FS_Field is HAL.UInt3;
+   subtype S0FCR_FTH_Field is UInt2;
+   subtype S0FCR_FS_Field is UInt3;
 
    --  stream x FIFO control register
    type S0FCR_Register is record
@@ -475,7 +475,7 @@ package STM32_SVD.DMA is
       --  FIFO error interrupt enable
       FEIE          : Boolean := False;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -489,13 +489,13 @@ package STM32_SVD.DMA is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype S1CR_DIR_Field is HAL.UInt2;
-   subtype S1CR_PSIZE_Field is HAL.UInt2;
-   subtype S1CR_MSIZE_Field is HAL.UInt2;
-   subtype S1CR_PL_Field is HAL.UInt2;
-   subtype S1CR_PBURST_Field is HAL.UInt2;
-   subtype S1CR_MBURST_Field is HAL.UInt2;
-   subtype S1CR_CHSEL_Field is HAL.UInt3;
+   subtype S1CR_DIR_Field is UInt2;
+   subtype S1CR_PSIZE_Field is UInt2;
+   subtype S1CR_MSIZE_Field is UInt2;
+   subtype S1CR_PL_Field is UInt2;
+   subtype S1CR_PBURST_Field is UInt2;
+   subtype S1CR_MBURST_Field is UInt2;
+   subtype S1CR_CHSEL_Field is UInt3;
 
    --  stream x configuration register
    type S1CR_Register is record
@@ -540,7 +540,7 @@ package STM32_SVD.DMA is
       --  Channel selection
       CHSEL          : S1CR_CHSEL_Field := 16#0#;
       --  unspecified
-      Reserved_28_31 : HAL.UInt4 := 16#0#;
+      Reserved_28_31 : UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -569,14 +569,14 @@ package STM32_SVD.DMA is
       Reserved_28_31 at 0 range 28 .. 31;
    end record;
 
-   subtype S1NDTR_NDT_Field is HAL.UInt16;
+   subtype S1NDTR_NDT_Field is UInt16;
 
    --  stream x number of data register
    type S1NDTR_Register is record
       --  Number of data items to transfer
       NDT            : S1NDTR_NDT_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -586,8 +586,8 @@ package STM32_SVD.DMA is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype S1FCR_FTH_Field is HAL.UInt2;
-   subtype S1FCR_FS_Field is HAL.UInt3;
+   subtype S1FCR_FTH_Field is UInt2;
+   subtype S1FCR_FS_Field is UInt3;
 
    --  stream x FIFO control register
    type S1FCR_Register is record
@@ -602,7 +602,7 @@ package STM32_SVD.DMA is
       --  FIFO error interrupt enable
       FEIE          : Boolean := False;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -616,13 +616,13 @@ package STM32_SVD.DMA is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype S2CR_DIR_Field is HAL.UInt2;
-   subtype S2CR_PSIZE_Field is HAL.UInt2;
-   subtype S2CR_MSIZE_Field is HAL.UInt2;
-   subtype S2CR_PL_Field is HAL.UInt2;
-   subtype S2CR_PBURST_Field is HAL.UInt2;
-   subtype S2CR_MBURST_Field is HAL.UInt2;
-   subtype S2CR_CHSEL_Field is HAL.UInt3;
+   subtype S2CR_DIR_Field is UInt2;
+   subtype S2CR_PSIZE_Field is UInt2;
+   subtype S2CR_MSIZE_Field is UInt2;
+   subtype S2CR_PL_Field is UInt2;
+   subtype S2CR_PBURST_Field is UInt2;
+   subtype S2CR_MBURST_Field is UInt2;
+   subtype S2CR_CHSEL_Field is UInt3;
 
    --  stream x configuration register
    type S2CR_Register is record
@@ -667,7 +667,7 @@ package STM32_SVD.DMA is
       --  Channel selection
       CHSEL          : S2CR_CHSEL_Field := 16#0#;
       --  unspecified
-      Reserved_28_31 : HAL.UInt4 := 16#0#;
+      Reserved_28_31 : UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -696,14 +696,14 @@ package STM32_SVD.DMA is
       Reserved_28_31 at 0 range 28 .. 31;
    end record;
 
-   subtype S2NDTR_NDT_Field is HAL.UInt16;
+   subtype S2NDTR_NDT_Field is UInt16;
 
    --  stream x number of data register
    type S2NDTR_Register is record
       --  Number of data items to transfer
       NDT            : S2NDTR_NDT_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -713,8 +713,8 @@ package STM32_SVD.DMA is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype S2FCR_FTH_Field is HAL.UInt2;
-   subtype S2FCR_FS_Field is HAL.UInt3;
+   subtype S2FCR_FTH_Field is UInt2;
+   subtype S2FCR_FS_Field is UInt3;
 
    --  stream x FIFO control register
    type S2FCR_Register is record
@@ -729,7 +729,7 @@ package STM32_SVD.DMA is
       --  FIFO error interrupt enable
       FEIE          : Boolean := False;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -743,13 +743,13 @@ package STM32_SVD.DMA is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype S3CR_DIR_Field is HAL.UInt2;
-   subtype S3CR_PSIZE_Field is HAL.UInt2;
-   subtype S3CR_MSIZE_Field is HAL.UInt2;
-   subtype S3CR_PL_Field is HAL.UInt2;
-   subtype S3CR_PBURST_Field is HAL.UInt2;
-   subtype S3CR_MBURST_Field is HAL.UInt2;
-   subtype S3CR_CHSEL_Field is HAL.UInt3;
+   subtype S3CR_DIR_Field is UInt2;
+   subtype S3CR_PSIZE_Field is UInt2;
+   subtype S3CR_MSIZE_Field is UInt2;
+   subtype S3CR_PL_Field is UInt2;
+   subtype S3CR_PBURST_Field is UInt2;
+   subtype S3CR_MBURST_Field is UInt2;
+   subtype S3CR_CHSEL_Field is UInt3;
 
    --  stream x configuration register
    type S3CR_Register is record
@@ -794,7 +794,7 @@ package STM32_SVD.DMA is
       --  Channel selection
       CHSEL          : S3CR_CHSEL_Field := 16#0#;
       --  unspecified
-      Reserved_28_31 : HAL.UInt4 := 16#0#;
+      Reserved_28_31 : UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -823,14 +823,14 @@ package STM32_SVD.DMA is
       Reserved_28_31 at 0 range 28 .. 31;
    end record;
 
-   subtype S3NDTR_NDT_Field is HAL.UInt16;
+   subtype S3NDTR_NDT_Field is UInt16;
 
    --  stream x number of data register
    type S3NDTR_Register is record
       --  Number of data items to transfer
       NDT            : S3NDTR_NDT_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -840,8 +840,8 @@ package STM32_SVD.DMA is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype S3FCR_FTH_Field is HAL.UInt2;
-   subtype S3FCR_FS_Field is HAL.UInt3;
+   subtype S3FCR_FTH_Field is UInt2;
+   subtype S3FCR_FS_Field is UInt3;
 
    --  stream x FIFO control register
    type S3FCR_Register is record
@@ -856,7 +856,7 @@ package STM32_SVD.DMA is
       --  FIFO error interrupt enable
       FEIE          : Boolean := False;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -870,13 +870,13 @@ package STM32_SVD.DMA is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype S4CR_DIR_Field is HAL.UInt2;
-   subtype S4CR_PSIZE_Field is HAL.UInt2;
-   subtype S4CR_MSIZE_Field is HAL.UInt2;
-   subtype S4CR_PL_Field is HAL.UInt2;
-   subtype S4CR_PBURST_Field is HAL.UInt2;
-   subtype S4CR_MBURST_Field is HAL.UInt2;
-   subtype S4CR_CHSEL_Field is HAL.UInt3;
+   subtype S4CR_DIR_Field is UInt2;
+   subtype S4CR_PSIZE_Field is UInt2;
+   subtype S4CR_MSIZE_Field is UInt2;
+   subtype S4CR_PL_Field is UInt2;
+   subtype S4CR_PBURST_Field is UInt2;
+   subtype S4CR_MBURST_Field is UInt2;
+   subtype S4CR_CHSEL_Field is UInt3;
 
    --  stream x configuration register
    type S4CR_Register is record
@@ -921,7 +921,7 @@ package STM32_SVD.DMA is
       --  Channel selection
       CHSEL          : S4CR_CHSEL_Field := 16#0#;
       --  unspecified
-      Reserved_28_31 : HAL.UInt4 := 16#0#;
+      Reserved_28_31 : UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -950,14 +950,14 @@ package STM32_SVD.DMA is
       Reserved_28_31 at 0 range 28 .. 31;
    end record;
 
-   subtype S4NDTR_NDT_Field is HAL.UInt16;
+   subtype S4NDTR_NDT_Field is UInt16;
 
    --  stream x number of data register
    type S4NDTR_Register is record
       --  Number of data items to transfer
       NDT            : S4NDTR_NDT_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -967,8 +967,8 @@ package STM32_SVD.DMA is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype S4FCR_FTH_Field is HAL.UInt2;
-   subtype S4FCR_FS_Field is HAL.UInt3;
+   subtype S4FCR_FTH_Field is UInt2;
+   subtype S4FCR_FS_Field is UInt3;
 
    --  stream x FIFO control register
    type S4FCR_Register is record
@@ -983,7 +983,7 @@ package STM32_SVD.DMA is
       --  FIFO error interrupt enable
       FEIE          : Boolean := False;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -997,13 +997,13 @@ package STM32_SVD.DMA is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype S5CR_DIR_Field is HAL.UInt2;
-   subtype S5CR_PSIZE_Field is HAL.UInt2;
-   subtype S5CR_MSIZE_Field is HAL.UInt2;
-   subtype S5CR_PL_Field is HAL.UInt2;
-   subtype S5CR_PBURST_Field is HAL.UInt2;
-   subtype S5CR_MBURST_Field is HAL.UInt2;
-   subtype S5CR_CHSEL_Field is HAL.UInt3;
+   subtype S5CR_DIR_Field is UInt2;
+   subtype S5CR_PSIZE_Field is UInt2;
+   subtype S5CR_MSIZE_Field is UInt2;
+   subtype S5CR_PL_Field is UInt2;
+   subtype S5CR_PBURST_Field is UInt2;
+   subtype S5CR_MBURST_Field is UInt2;
+   subtype S5CR_CHSEL_Field is UInt3;
 
    --  stream x configuration register
    type S5CR_Register is record
@@ -1048,7 +1048,7 @@ package STM32_SVD.DMA is
       --  Channel selection
       CHSEL          : S5CR_CHSEL_Field := 16#0#;
       --  unspecified
-      Reserved_28_31 : HAL.UInt4 := 16#0#;
+      Reserved_28_31 : UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1077,14 +1077,14 @@ package STM32_SVD.DMA is
       Reserved_28_31 at 0 range 28 .. 31;
    end record;
 
-   subtype S5NDTR_NDT_Field is HAL.UInt16;
+   subtype S5NDTR_NDT_Field is UInt16;
 
    --  stream x number of data register
    type S5NDTR_Register is record
       --  Number of data items to transfer
       NDT            : S5NDTR_NDT_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1094,8 +1094,8 @@ package STM32_SVD.DMA is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype S5FCR_FTH_Field is HAL.UInt2;
-   subtype S5FCR_FS_Field is HAL.UInt3;
+   subtype S5FCR_FTH_Field is UInt2;
+   subtype S5FCR_FS_Field is UInt3;
 
    --  stream x FIFO control register
    type S5FCR_Register is record
@@ -1110,7 +1110,7 @@ package STM32_SVD.DMA is
       --  FIFO error interrupt enable
       FEIE          : Boolean := False;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1124,13 +1124,13 @@ package STM32_SVD.DMA is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype S6CR_DIR_Field is HAL.UInt2;
-   subtype S6CR_PSIZE_Field is HAL.UInt2;
-   subtype S6CR_MSIZE_Field is HAL.UInt2;
-   subtype S6CR_PL_Field is HAL.UInt2;
-   subtype S6CR_PBURST_Field is HAL.UInt2;
-   subtype S6CR_MBURST_Field is HAL.UInt2;
-   subtype S6CR_CHSEL_Field is HAL.UInt3;
+   subtype S6CR_DIR_Field is UInt2;
+   subtype S6CR_PSIZE_Field is UInt2;
+   subtype S6CR_MSIZE_Field is UInt2;
+   subtype S6CR_PL_Field is UInt2;
+   subtype S6CR_PBURST_Field is UInt2;
+   subtype S6CR_MBURST_Field is UInt2;
+   subtype S6CR_CHSEL_Field is UInt3;
 
    --  stream x configuration register
    type S6CR_Register is record
@@ -1175,7 +1175,7 @@ package STM32_SVD.DMA is
       --  Channel selection
       CHSEL          : S6CR_CHSEL_Field := 16#0#;
       --  unspecified
-      Reserved_28_31 : HAL.UInt4 := 16#0#;
+      Reserved_28_31 : UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1204,14 +1204,14 @@ package STM32_SVD.DMA is
       Reserved_28_31 at 0 range 28 .. 31;
    end record;
 
-   subtype S6NDTR_NDT_Field is HAL.UInt16;
+   subtype S6NDTR_NDT_Field is UInt16;
 
    --  stream x number of data register
    type S6NDTR_Register is record
       --  Number of data items to transfer
       NDT            : S6NDTR_NDT_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1221,8 +1221,8 @@ package STM32_SVD.DMA is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype S6FCR_FTH_Field is HAL.UInt2;
-   subtype S6FCR_FS_Field is HAL.UInt3;
+   subtype S6FCR_FTH_Field is UInt2;
+   subtype S6FCR_FS_Field is UInt3;
 
    --  stream x FIFO control register
    type S6FCR_Register is record
@@ -1237,7 +1237,7 @@ package STM32_SVD.DMA is
       --  FIFO error interrupt enable
       FEIE          : Boolean := False;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1251,13 +1251,13 @@ package STM32_SVD.DMA is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype S7CR_DIR_Field is HAL.UInt2;
-   subtype S7CR_PSIZE_Field is HAL.UInt2;
-   subtype S7CR_MSIZE_Field is HAL.UInt2;
-   subtype S7CR_PL_Field is HAL.UInt2;
-   subtype S7CR_PBURST_Field is HAL.UInt2;
-   subtype S7CR_MBURST_Field is HAL.UInt2;
-   subtype S7CR_CHSEL_Field is HAL.UInt3;
+   subtype S7CR_DIR_Field is UInt2;
+   subtype S7CR_PSIZE_Field is UInt2;
+   subtype S7CR_MSIZE_Field is UInt2;
+   subtype S7CR_PL_Field is UInt2;
+   subtype S7CR_PBURST_Field is UInt2;
+   subtype S7CR_MBURST_Field is UInt2;
+   subtype S7CR_CHSEL_Field is UInt3;
 
    --  stream x configuration register
    type S7CR_Register is record
@@ -1302,7 +1302,7 @@ package STM32_SVD.DMA is
       --  Channel selection
       CHSEL          : S7CR_CHSEL_Field := 16#0#;
       --  unspecified
-      Reserved_28_31 : HAL.UInt4 := 16#0#;
+      Reserved_28_31 : UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1331,14 +1331,14 @@ package STM32_SVD.DMA is
       Reserved_28_31 at 0 range 28 .. 31;
    end record;
 
-   subtype S7NDTR_NDT_Field is HAL.UInt16;
+   subtype S7NDTR_NDT_Field is UInt16;
 
    --  stream x number of data register
    type S7NDTR_Register is record
       --  Number of data items to transfer
       NDT            : S7NDTR_NDT_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1348,8 +1348,8 @@ package STM32_SVD.DMA is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype S7FCR_FTH_Field is HAL.UInt2;
-   subtype S7FCR_FS_Field is HAL.UInt3;
+   subtype S7FCR_FTH_Field is UInt2;
+   subtype S7FCR_FS_Field is UInt3;
 
    --  stream x FIFO control register
    type S7FCR_Register is record
@@ -1364,7 +1364,7 @@ package STM32_SVD.DMA is
       --  FIFO error interrupt enable
       FEIE          : Boolean := False;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1397,11 +1397,11 @@ package STM32_SVD.DMA is
       --  stream x number of data register
       S0NDTR : aliased S0NDTR_Register;
       --  stream x peripheral address register
-      S0PAR  : aliased HAL.UInt32;
+      S0PAR  : aliased UInt32;
       --  stream x memory 0 address register
-      S0M0AR : aliased HAL.UInt32;
+      S0M0AR : aliased UInt32;
       --  stream x memory 1 address register
-      S0M1AR : aliased HAL.UInt32;
+      S0M1AR : aliased UInt32;
       --  stream x FIFO control register
       S0FCR  : aliased S0FCR_Register;
       --  stream x configuration register
@@ -1409,11 +1409,11 @@ package STM32_SVD.DMA is
       --  stream x number of data register
       S1NDTR : aliased S1NDTR_Register;
       --  stream x peripheral address register
-      S1PAR  : aliased HAL.UInt32;
+      S1PAR  : aliased UInt32;
       --  stream x memory 0 address register
-      S1M0AR : aliased HAL.UInt32;
+      S1M0AR : aliased UInt32;
       --  stream x memory 1 address register
-      S1M1AR : aliased HAL.UInt32;
+      S1M1AR : aliased UInt32;
       --  stream x FIFO control register
       S1FCR  : aliased S1FCR_Register;
       --  stream x configuration register
@@ -1421,11 +1421,11 @@ package STM32_SVD.DMA is
       --  stream x number of data register
       S2NDTR : aliased S2NDTR_Register;
       --  stream x peripheral address register
-      S2PAR  : aliased HAL.UInt32;
+      S2PAR  : aliased UInt32;
       --  stream x memory 0 address register
-      S2M0AR : aliased HAL.UInt32;
+      S2M0AR : aliased UInt32;
       --  stream x memory 1 address register
-      S2M1AR : aliased HAL.UInt32;
+      S2M1AR : aliased UInt32;
       --  stream x FIFO control register
       S2FCR  : aliased S2FCR_Register;
       --  stream x configuration register
@@ -1433,11 +1433,11 @@ package STM32_SVD.DMA is
       --  stream x number of data register
       S3NDTR : aliased S3NDTR_Register;
       --  stream x peripheral address register
-      S3PAR  : aliased HAL.UInt32;
+      S3PAR  : aliased UInt32;
       --  stream x memory 0 address register
-      S3M0AR : aliased HAL.UInt32;
+      S3M0AR : aliased UInt32;
       --  stream x memory 1 address register
-      S3M1AR : aliased HAL.UInt32;
+      S3M1AR : aliased UInt32;
       --  stream x FIFO control register
       S3FCR  : aliased S3FCR_Register;
       --  stream x configuration register
@@ -1445,11 +1445,11 @@ package STM32_SVD.DMA is
       --  stream x number of data register
       S4NDTR : aliased S4NDTR_Register;
       --  stream x peripheral address register
-      S4PAR  : aliased HAL.UInt32;
+      S4PAR  : aliased UInt32;
       --  stream x memory 0 address register
-      S4M0AR : aliased HAL.UInt32;
+      S4M0AR : aliased UInt32;
       --  stream x memory 1 address register
-      S4M1AR : aliased HAL.UInt32;
+      S4M1AR : aliased UInt32;
       --  stream x FIFO control register
       S4FCR  : aliased S4FCR_Register;
       --  stream x configuration register
@@ -1457,11 +1457,11 @@ package STM32_SVD.DMA is
       --  stream x number of data register
       S5NDTR : aliased S5NDTR_Register;
       --  stream x peripheral address register
-      S5PAR  : aliased HAL.UInt32;
+      S5PAR  : aliased UInt32;
       --  stream x memory 0 address register
-      S5M0AR : aliased HAL.UInt32;
+      S5M0AR : aliased UInt32;
       --  stream x memory 1 address register
-      S5M1AR : aliased HAL.UInt32;
+      S5M1AR : aliased UInt32;
       --  stream x FIFO control register
       S5FCR  : aliased S5FCR_Register;
       --  stream x configuration register
@@ -1469,11 +1469,11 @@ package STM32_SVD.DMA is
       --  stream x number of data register
       S6NDTR : aliased S6NDTR_Register;
       --  stream x peripheral address register
-      S6PAR  : aliased HAL.UInt32;
+      S6PAR  : aliased UInt32;
       --  stream x memory 0 address register
-      S6M0AR : aliased HAL.UInt32;
+      S6M0AR : aliased UInt32;
       --  stream x memory 1 address register
-      S6M1AR : aliased HAL.UInt32;
+      S6M1AR : aliased UInt32;
       --  stream x FIFO control register
       S6FCR  : aliased S6FCR_Register;
       --  stream x configuration register
@@ -1481,11 +1481,11 @@ package STM32_SVD.DMA is
       --  stream x number of data register
       S7NDTR : aliased S7NDTR_Register;
       --  stream x peripheral address register
-      S7PAR  : aliased HAL.UInt32;
+      S7PAR  : aliased UInt32;
       --  stream x memory 0 address register
-      S7M0AR : aliased HAL.UInt32;
+      S7M0AR : aliased UInt32;
       --  stream x memory 1 address register
-      S7M1AR : aliased HAL.UInt32;
+      S7M1AR : aliased UInt32;
       --  stream x FIFO control register
       S7FCR  : aliased S7FCR_Register;
    end record

@@ -4,7 +4,7 @@ pragma Restrictions (No_Elaboration_Code);
 pragma Ada_2012;
 pragma Style_Checks (Off);
 
-with HAL;
+with Beta_Types; use Beta_Types;
 with System;
 
 package STM32_SVD.IWDG is
@@ -14,14 +14,14 @@ package STM32_SVD.IWDG is
    -- Registers --
    ---------------
 
-   subtype KR_KEY_Field is HAL.UInt16;
+   subtype KR_KEY_Field is UInt16;
 
    --  Key register
    type KR_Register is record
       --  Write-only. Key value (write only, read 0000h)
       KEY            : KR_KEY_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -31,14 +31,14 @@ package STM32_SVD.IWDG is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype PR_PR_Field is HAL.UInt3;
+   subtype PR_PR_Field is UInt3;
 
    --  Prescaler register
    type PR_Register is record
       --  Prescaler divider
       PR            : PR_PR_Field := 16#0#;
       --  unspecified
-      Reserved_3_31 : HAL.UInt29 := 16#0#;
+      Reserved_3_31 : UInt29 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -48,14 +48,14 @@ package STM32_SVD.IWDG is
       Reserved_3_31 at 0 range 3 .. 31;
    end record;
 
-   subtype RLR_RL_Field is HAL.UInt12;
+   subtype RLR_RL_Field is UInt12;
 
    --  Reload register
    type RLR_Register is record
       --  Watchdog counter reload value
       RL             : RLR_RL_Field := 16#FFF#;
       --  unspecified
-      Reserved_12_31 : HAL.UInt20 := 16#0#;
+      Reserved_12_31 : UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -72,7 +72,7 @@ package STM32_SVD.IWDG is
       --  Read-only. Watchdog counter reload value update
       RVU           : Boolean;
       --  unspecified
-      Reserved_2_31 : HAL.UInt30;
+      Reserved_2_31 : UInt30;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;

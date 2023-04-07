@@ -4,7 +4,7 @@ pragma Restrictions (No_Elaboration_Code);
 pragma Ada_2012;
 pragma Style_Checks (Off);
 
-with HAL;
+with Beta_Types; use Beta_Types;
 with System;
 
 package STM32_SVD.PWR is
@@ -14,7 +14,7 @@ package STM32_SVD.PWR is
    -- Registers --
    ---------------
 
-   subtype CR_PLS_Field is HAL.UInt3;
+   subtype CR_PLS_Field is UInt3;
 
    --  power control register
    type CR_Register is record
@@ -35,11 +35,11 @@ package STM32_SVD.PWR is
       --  Flash power down in Stop mode
       FPDS           : Boolean := False;
       --  unspecified
-      Reserved_10_13 : HAL.UInt4 := 16#0#;
+      Reserved_10_13 : UInt4 := 16#0#;
       --  Regulator voltage scaling mode
       VOS            : Boolean := False;
       --  unspecified
-      Reserved_15_31 : HAL.UInt17 := 16#0#;
+      Reserved_15_31 : UInt17 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -69,17 +69,17 @@ package STM32_SVD.PWR is
       --  Read-only. Backup regulator ready
       BRR            : Boolean := False;
       --  unspecified
-      Reserved_4_7   : HAL.UInt4 := 16#0#;
+      Reserved_4_7   : UInt4 := 16#0#;
       --  Enable WKUP pin
       EWUP           : Boolean := False;
       --  Backup regulator enable
       BRE            : Boolean := False;
       --  unspecified
-      Reserved_10_13 : HAL.UInt4 := 16#0#;
+      Reserved_10_13 : UInt4 := 16#0#;
       --  Regulator voltage scaling output selection ready bit
       VOSRDY         : Boolean := False;
       --  unspecified
-      Reserved_15_31 : HAL.UInt17 := 16#0#;
+      Reserved_15_31 : UInt17 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;

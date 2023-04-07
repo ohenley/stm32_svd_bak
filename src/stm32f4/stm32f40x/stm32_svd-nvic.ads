@@ -4,7 +4,7 @@ pragma Restrictions (No_Elaboration_Code);
 pragma Ada_2012;
 pragma Style_Checks (Off);
 
-with HAL;
+with Beta_Types; use Beta_Types;
 with System;
 
 package STM32_SVD.NVIC is
@@ -14,14 +14,14 @@ package STM32_SVD.NVIC is
    -- Registers --
    ---------------
 
-   subtype ICTR_INTLINESNUM_Field is HAL.UInt4;
+   subtype ICTR_INTLINESNUM_Field is UInt4;
 
    --  Interrupt Controller Type Register
    type ICTR_Register is record
       --  Read-only. Total number of interrupt lines in groups
       INTLINESNUM   : ICTR_INTLINESNUM_Field;
       --  unspecified
-      Reserved_4_31 : HAL.UInt28;
+      Reserved_4_31 : UInt28;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -32,7 +32,7 @@ package STM32_SVD.NVIC is
    end record;
 
    --  IPR_IPR_N array element
-   subtype IPR_IPR_N_Element is HAL.UInt8;
+   subtype IPR_IPR_N_Element is UInt8;
 
    --  IPR_IPR_N array
    type IPR_IPR_N_Field_Array is array (0 .. 3) of IPR_IPR_N_Element
@@ -45,7 +45,7 @@ package STM32_SVD.NVIC is
       case As_Array is
          when False =>
             --  IPR_N as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  IPR_N as an array
             Arr : IPR_IPR_N_Field_Array;
@@ -59,14 +59,14 @@ package STM32_SVD.NVIC is
       Arr at 0 range 0 .. 31;
    end record;
 
-   subtype STIR_INTID_Field is HAL.UInt9;
+   subtype STIR_INTID_Field is UInt9;
 
    --  Software Triggered Interrupt Register
    type STIR_Register is record
       --  Write-only. interrupt to be triggered
       INTID         : STIR_INTID_Field := 16#0#;
       --  unspecified
-      Reserved_9_31 : HAL.UInt23 := 16#0#;
+      Reserved_9_31 : UInt23 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -85,35 +85,35 @@ package STM32_SVD.NVIC is
       --  Interrupt Controller Type Register
       ICTR  : aliased ICTR_Register;
       --  Interrupt Set-Enable Register
-      ISER0 : aliased HAL.UInt32;
+      ISER0 : aliased UInt32;
       --  Interrupt Set-Enable Register
-      ISER1 : aliased HAL.UInt32;
+      ISER1 : aliased UInt32;
       --  Interrupt Set-Enable Register
-      ISER2 : aliased HAL.UInt32;
+      ISER2 : aliased UInt32;
       --  Interrupt Clear-Enable Register
-      ICER0 : aliased HAL.UInt32;
+      ICER0 : aliased UInt32;
       --  Interrupt Clear-Enable Register
-      ICER1 : aliased HAL.UInt32;
+      ICER1 : aliased UInt32;
       --  Interrupt Clear-Enable Register
-      ICER2 : aliased HAL.UInt32;
+      ICER2 : aliased UInt32;
       --  Interrupt Set-Pending Register
-      ISPR0 : aliased HAL.UInt32;
+      ISPR0 : aliased UInt32;
       --  Interrupt Set-Pending Register
-      ISPR1 : aliased HAL.UInt32;
+      ISPR1 : aliased UInt32;
       --  Interrupt Set-Pending Register
-      ISPR2 : aliased HAL.UInt32;
+      ISPR2 : aliased UInt32;
       --  Interrupt Clear-Pending Register
-      ICPR0 : aliased HAL.UInt32;
+      ICPR0 : aliased UInt32;
       --  Interrupt Clear-Pending Register
-      ICPR1 : aliased HAL.UInt32;
+      ICPR1 : aliased UInt32;
       --  Interrupt Clear-Pending Register
-      ICPR2 : aliased HAL.UInt32;
+      ICPR2 : aliased UInt32;
       --  Interrupt Active Bit Register
-      IABR0 : aliased HAL.UInt32;
+      IABR0 : aliased UInt32;
       --  Interrupt Active Bit Register
-      IABR1 : aliased HAL.UInt32;
+      IABR1 : aliased UInt32;
       --  Interrupt Active Bit Register
-      IABR2 : aliased HAL.UInt32;
+      IABR2 : aliased UInt32;
       --  Interrupt Priority Register
       IPR0  : aliased IPR_Register;
       --  Interrupt Priority Register

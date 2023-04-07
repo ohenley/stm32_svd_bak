@@ -4,7 +4,7 @@ pragma Restrictions (No_Elaboration_Code);
 pragma Ada_2012;
 pragma Style_Checks (Off);
 
-with HAL;
+with Beta_Types; use Beta_Types;
 with System;
 
 package STM32_SVD.DAC is
@@ -14,12 +14,12 @@ package STM32_SVD.DAC is
    -- Registers --
    ---------------
 
-   subtype CR_TSEL1_Field is HAL.UInt3;
-   subtype CR_WAVE1_Field is HAL.UInt2;
-   subtype CR_MAMP1_Field is HAL.UInt4;
-   subtype CR_TSEL2_Field is HAL.UInt3;
-   subtype CR_WAVE2_Field is HAL.UInt2;
-   subtype CR_MAMP2_Field is HAL.UInt4;
+   subtype CR_TSEL1_Field is UInt3;
+   subtype CR_WAVE1_Field is UInt2;
+   subtype CR_MAMP1_Field is UInt4;
+   subtype CR_TSEL2_Field is UInt3;
+   subtype CR_WAVE2_Field is UInt2;
+   subtype CR_MAMP2_Field is UInt4;
 
    --  control register
    type CR_Register is record
@@ -40,7 +40,7 @@ package STM32_SVD.DAC is
       --  DAC channel1 DMA Underrun Interrupt enable
       DMAUDRIE1      : Boolean := False;
       --  unspecified
-      Reserved_14_15 : HAL.UInt2 := 16#0#;
+      Reserved_14_15 : UInt2 := 16#0#;
       --  DAC channel2 enable
       EN2            : Boolean := False;
       --  DAC channel2 output buffer disable
@@ -58,7 +58,7 @@ package STM32_SVD.DAC is
       --  DAC channel2 DMA underrun interrupt enable
       DMAUDRIE2      : Boolean := False;
       --  unspecified
-      Reserved_30_31 : HAL.UInt2 := 16#0#;
+      Reserved_30_31 : UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -95,7 +95,7 @@ package STM32_SVD.DAC is
       case As_Array is
          when False =>
             --  SWTRIG as a value
-            Val : HAL.UInt2;
+            Val : UInt2;
          when True =>
             --  SWTRIG as an array
             Arr : SWTRIGR_SWTRIG_Field_Array;
@@ -114,7 +114,7 @@ package STM32_SVD.DAC is
       SWTRIG        : SWTRIGR_SWTRIG_Field :=
                        (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_2_31 : HAL.UInt30 := 16#0#;
+      Reserved_2_31 : UInt30 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -124,14 +124,14 @@ package STM32_SVD.DAC is
       Reserved_2_31 at 0 range 2 .. 31;
    end record;
 
-   subtype DHR12R1_DACC1DHR_Field is HAL.UInt12;
+   subtype DHR12R1_DACC1DHR_Field is UInt12;
 
    --  channel1 12-bit right-aligned data holding register
    type DHR12R1_Register is record
       --  DAC channel1 12-bit right-aligned data
       DACC1DHR       : DHR12R1_DACC1DHR_Field := 16#0#;
       --  unspecified
-      Reserved_12_31 : HAL.UInt20 := 16#0#;
+      Reserved_12_31 : UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -141,16 +141,16 @@ package STM32_SVD.DAC is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype DHR12L1_DACC1DHR_Field is HAL.UInt12;
+   subtype DHR12L1_DACC1DHR_Field is UInt12;
 
    --  channel1 12-bit left aligned data holding register
    type DHR12L1_Register is record
       --  unspecified
-      Reserved_0_3   : HAL.UInt4 := 16#0#;
+      Reserved_0_3   : UInt4 := 16#0#;
       --  DAC channel1 12-bit left-aligned data
       DACC1DHR       : DHR12L1_DACC1DHR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -161,14 +161,14 @@ package STM32_SVD.DAC is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype DHR8R1_DACC1DHR_Field is HAL.UInt8;
+   subtype DHR8R1_DACC1DHR_Field is UInt8;
 
    --  channel1 8-bit right aligned data holding register
    type DHR8R1_Register is record
       --  DAC channel1 8-bit right-aligned data
       DACC1DHR      : DHR8R1_DACC1DHR_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -178,14 +178,14 @@ package STM32_SVD.DAC is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype DHR12R2_DACC2DHR_Field is HAL.UInt12;
+   subtype DHR12R2_DACC2DHR_Field is UInt12;
 
    --  channel2 12-bit right aligned data holding register
    type DHR12R2_Register is record
       --  DAC channel2 12-bit right-aligned data
       DACC2DHR       : DHR12R2_DACC2DHR_Field := 16#0#;
       --  unspecified
-      Reserved_12_31 : HAL.UInt20 := 16#0#;
+      Reserved_12_31 : UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -195,16 +195,16 @@ package STM32_SVD.DAC is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype DHR12L2_DACC2DHR_Field is HAL.UInt12;
+   subtype DHR12L2_DACC2DHR_Field is UInt12;
 
    --  channel2 12-bit left aligned data holding register
    type DHR12L2_Register is record
       --  unspecified
-      Reserved_0_3   : HAL.UInt4 := 16#0#;
+      Reserved_0_3   : UInt4 := 16#0#;
       --  DAC channel2 12-bit left-aligned data
       DACC2DHR       : DHR12L2_DACC2DHR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -215,14 +215,14 @@ package STM32_SVD.DAC is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype DHR8R2_DACC2DHR_Field is HAL.UInt8;
+   subtype DHR8R2_DACC2DHR_Field is UInt8;
 
    --  channel2 8-bit right-aligned data holding register
    type DHR8R2_Register is record
       --  DAC channel2 8-bit right-aligned data
       DACC2DHR      : DHR8R2_DACC2DHR_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -232,19 +232,19 @@ package STM32_SVD.DAC is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype DHR12RD_DACC1DHR_Field is HAL.UInt12;
-   subtype DHR12RD_DACC2DHR_Field is HAL.UInt12;
+   subtype DHR12RD_DACC1DHR_Field is UInt12;
+   subtype DHR12RD_DACC2DHR_Field is UInt12;
 
    --  Dual DAC 12-bit right-aligned data holding register
    type DHR12RD_Register is record
       --  DAC channel1 12-bit right-aligned data
       DACC1DHR       : DHR12RD_DACC1DHR_Field := 16#0#;
       --  unspecified
-      Reserved_12_15 : HAL.UInt4 := 16#0#;
+      Reserved_12_15 : UInt4 := 16#0#;
       --  DAC channel2 12-bit right-aligned data
       DACC2DHR       : DHR12RD_DACC2DHR_Field := 16#0#;
       --  unspecified
-      Reserved_28_31 : HAL.UInt4 := 16#0#;
+      Reserved_28_31 : UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -256,17 +256,17 @@ package STM32_SVD.DAC is
       Reserved_28_31 at 0 range 28 .. 31;
    end record;
 
-   subtype DHR12LD_DACC1DHR_Field is HAL.UInt12;
-   subtype DHR12LD_DACC2DHR_Field is HAL.UInt12;
+   subtype DHR12LD_DACC1DHR_Field is UInt12;
+   subtype DHR12LD_DACC2DHR_Field is UInt12;
 
    --  DUAL DAC 12-bit left aligned data holding register
    type DHR12LD_Register is record
       --  unspecified
-      Reserved_0_3   : HAL.UInt4 := 16#0#;
+      Reserved_0_3   : UInt4 := 16#0#;
       --  DAC channel1 12-bit left-aligned data
       DACC1DHR       : DHR12LD_DACC1DHR_Field := 16#0#;
       --  unspecified
-      Reserved_16_19 : HAL.UInt4 := 16#0#;
+      Reserved_16_19 : UInt4 := 16#0#;
       --  DAC channel2 12-bit left-aligned data
       DACC2DHR       : DHR12LD_DACC2DHR_Field := 16#0#;
    end record
@@ -280,8 +280,8 @@ package STM32_SVD.DAC is
       DACC2DHR       at 0 range 20 .. 31;
    end record;
 
-   subtype DHR8RD_DACC1DHR_Field is HAL.UInt8;
-   subtype DHR8RD_DACC2DHR_Field is HAL.UInt8;
+   subtype DHR8RD_DACC1DHR_Field is UInt8;
+   subtype DHR8RD_DACC2DHR_Field is UInt8;
 
    --  DUAL DAC 8-bit right aligned data holding register
    type DHR8RD_Register is record
@@ -290,7 +290,7 @@ package STM32_SVD.DAC is
       --  DAC channel2 8-bit right-aligned data
       DACC2DHR       : DHR8RD_DACC2DHR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -301,14 +301,14 @@ package STM32_SVD.DAC is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype DOR1_DACC1DOR_Field is HAL.UInt12;
+   subtype DOR1_DACC1DOR_Field is UInt12;
 
    --  channel1 data output register
    type DOR1_Register is record
       --  Read-only. DAC channel1 data output
       DACC1DOR       : DOR1_DACC1DOR_Field;
       --  unspecified
-      Reserved_12_31 : HAL.UInt20;
+      Reserved_12_31 : UInt20;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -318,14 +318,14 @@ package STM32_SVD.DAC is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype DOR2_DACC2DOR_Field is HAL.UInt12;
+   subtype DOR2_DACC2DOR_Field is UInt12;
 
    --  channel2 data output register
    type DOR2_Register is record
       --  Read-only. DAC channel2 data output
       DACC2DOR       : DOR2_DACC2DOR_Field;
       --  unspecified
-      Reserved_12_31 : HAL.UInt20;
+      Reserved_12_31 : UInt20;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -338,15 +338,15 @@ package STM32_SVD.DAC is
    --  status register
    type SR_Register is record
       --  unspecified
-      Reserved_0_12  : HAL.UInt13 := 16#0#;
+      Reserved_0_12  : UInt13 := 16#0#;
       --  DAC channel1 DMA underrun flag
       DMAUDR1        : Boolean := False;
       --  unspecified
-      Reserved_14_28 : HAL.UInt15 := 16#0#;
+      Reserved_14_28 : UInt15 := 16#0#;
       --  DAC channel2 DMA underrun flag
       DMAUDR2        : Boolean := False;
       --  unspecified
-      Reserved_30_31 : HAL.UInt2 := 16#0#;
+      Reserved_30_31 : UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;

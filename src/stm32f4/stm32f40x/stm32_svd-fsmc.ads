@@ -4,7 +4,7 @@ pragma Restrictions (No_Elaboration_Code);
 pragma Ada_2012;
 pragma Style_Checks (Off);
 
-with HAL;
+with Beta_Types; use Beta_Types;
 with System;
 
 package STM32_SVD.FSMC is
@@ -14,8 +14,8 @@ package STM32_SVD.FSMC is
    -- Registers --
    ---------------
 
-   subtype BCR1_MTYP_Field is HAL.UInt2;
-   subtype BCR1_MWID_Field is HAL.UInt2;
+   subtype BCR1_MTYP_Field is UInt2;
+   subtype BCR1_MWID_Field is UInt2;
 
    --  SRAM/NOR-Flash chip-select control register 1
    type BCR1_Register is record
@@ -48,11 +48,11 @@ package STM32_SVD.FSMC is
       --  ASYNCWAIT
       ASYNCWAIT      : Boolean := False;
       --  unspecified
-      Reserved_16_18 : HAL.UInt3 := 16#0#;
+      Reserved_16_18 : UInt3 := 16#0#;
       --  CBURSTRW
       CBURSTRW       : Boolean := False;
       --  unspecified
-      Reserved_20_31 : HAL.UInt12 := 16#0#;
+      Reserved_20_31 : UInt12 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -77,13 +77,13 @@ package STM32_SVD.FSMC is
       Reserved_20_31 at 0 range 20 .. 31;
    end record;
 
-   subtype BTR_ADDSET_Field is HAL.UInt4;
-   subtype BTR_ADDHLD_Field is HAL.UInt4;
-   subtype BTR_DATAST_Field is HAL.UInt8;
-   subtype BTR_BUSTURN_Field is HAL.UInt4;
-   subtype BTR_CLKDIV_Field is HAL.UInt4;
-   subtype BTR_DATLAT_Field is HAL.UInt4;
-   subtype BTR_ACCMOD_Field is HAL.UInt2;
+   subtype BTR_ADDSET_Field is UInt4;
+   subtype BTR_ADDHLD_Field is UInt4;
+   subtype BTR_DATAST_Field is UInt8;
+   subtype BTR_BUSTURN_Field is UInt4;
+   subtype BTR_CLKDIV_Field is UInt4;
+   subtype BTR_DATLAT_Field is UInt4;
+   subtype BTR_ACCMOD_Field is UInt2;
 
    --  SRAM/NOR-Flash chip-select timing register 1
    type BTR_Register is record
@@ -102,7 +102,7 @@ package STM32_SVD.FSMC is
       --  ACCMOD
       ACCMOD         : BTR_ACCMOD_Field := 16#3#;
       --  unspecified
-      Reserved_30_31 : HAL.UInt2 := 16#3#;
+      Reserved_30_31 : UInt2 := 16#3#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -118,8 +118,8 @@ package STM32_SVD.FSMC is
       Reserved_30_31 at 0 range 30 .. 31;
    end record;
 
-   subtype BCR_MTYP_Field is HAL.UInt2;
-   subtype BCR_MWID_Field is HAL.UInt2;
+   subtype BCR_MTYP_Field is UInt2;
+   subtype BCR_MWID_Field is UInt2;
 
    --  SRAM/NOR-Flash chip-select control register 2
    type BCR_Register is record
@@ -152,11 +152,11 @@ package STM32_SVD.FSMC is
       --  ASYNCWAIT
       ASYNCWAIT      : Boolean := False;
       --  unspecified
-      Reserved_16_18 : HAL.UInt3 := 16#0#;
+      Reserved_16_18 : UInt3 := 16#0#;
       --  CBURSTRW
       CBURSTRW       : Boolean := False;
       --  unspecified
-      Reserved_20_31 : HAL.UInt12 := 16#0#;
+      Reserved_20_31 : UInt12 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -181,10 +181,10 @@ package STM32_SVD.FSMC is
       Reserved_20_31 at 0 range 20 .. 31;
    end record;
 
-   subtype PCR_PWID_Field is HAL.UInt2;
-   subtype PCR_TCLR_Field is HAL.UInt4;
-   subtype PCR_TAR_Field is HAL.UInt4;
-   subtype PCR_ECCPS_Field is HAL.UInt3;
+   subtype PCR_PWID_Field is UInt2;
+   subtype PCR_TCLR_Field is UInt4;
+   subtype PCR_TAR_Field is UInt4;
+   subtype PCR_ECCPS_Field is UInt3;
 
    --  PC Card/NAND Flash control register 2
    type PCR_Register is record
@@ -201,7 +201,7 @@ package STM32_SVD.FSMC is
       --  ECCEN
       ECCEN          : Boolean := False;
       --  unspecified
-      Reserved_7_8   : HAL.UInt2 := 16#0#;
+      Reserved_7_8   : UInt2 := 16#0#;
       --  TCLR
       TCLR           : PCR_TCLR_Field := 16#0#;
       --  TAR
@@ -209,7 +209,7 @@ package STM32_SVD.FSMC is
       --  ECCPS
       ECCPS          : PCR_ECCPS_Field := 16#0#;
       --  unspecified
-      Reserved_20_31 : HAL.UInt12 := 16#0#;
+      Reserved_20_31 : UInt12 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -245,7 +245,7 @@ package STM32_SVD.FSMC is
       --  Read-only. FEMPT
       FEMPT         : Boolean := True;
       --  unspecified
-      Reserved_7_31 : HAL.UInt25 := 16#0#;
+      Reserved_7_31 : UInt25 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -261,10 +261,10 @@ package STM32_SVD.FSMC is
       Reserved_7_31 at 0 range 7 .. 31;
    end record;
 
-   subtype PMEM_MEMSETx_Field is HAL.UInt8;
-   subtype PMEM_MEMWAITx_Field is HAL.UInt8;
-   subtype PMEM_MEMHOLDx_Field is HAL.UInt8;
-   subtype PMEM_MEMHIZx_Field is HAL.UInt8;
+   subtype PMEM_MEMSETx_Field is UInt8;
+   subtype PMEM_MEMWAITx_Field is UInt8;
+   subtype PMEM_MEMHOLDx_Field is UInt8;
+   subtype PMEM_MEMHIZx_Field is UInt8;
 
    --  Common memory space timing register 2
    type PMEM_Register is record
@@ -287,10 +287,10 @@ package STM32_SVD.FSMC is
       MEMHIZx  at 0 range 24 .. 31;
    end record;
 
-   subtype PATT_ATTSETx_Field is HAL.UInt8;
-   subtype PATT_ATTWAITx_Field is HAL.UInt8;
-   subtype PATT_ATTHOLDx_Field is HAL.UInt8;
-   subtype PATT_ATTHIZx_Field is HAL.UInt8;
+   subtype PATT_ATTSETx_Field is UInt8;
+   subtype PATT_ATTWAITx_Field is UInt8;
+   subtype PATT_ATTHOLDx_Field is UInt8;
+   subtype PATT_ATTHIZx_Field is UInt8;
 
    --  Attribute memory space timing register 2
    type PATT_Register is record
@@ -313,10 +313,10 @@ package STM32_SVD.FSMC is
       ATTHIZx  at 0 range 24 .. 31;
    end record;
 
-   subtype PIO4_IOSETx_Field is HAL.UInt8;
-   subtype PIO4_IOWAITx_Field is HAL.UInt8;
-   subtype PIO4_IOHOLDx_Field is HAL.UInt8;
-   subtype PIO4_IOHIZx_Field is HAL.UInt8;
+   subtype PIO4_IOSETx_Field is UInt8;
+   subtype PIO4_IOWAITx_Field is UInt8;
+   subtype PIO4_IOHOLDx_Field is UInt8;
+   subtype PIO4_IOHIZx_Field is UInt8;
 
    --  I/O space timing register 4
    type PIO4_Register is record
@@ -339,12 +339,12 @@ package STM32_SVD.FSMC is
       IOHIZx  at 0 range 24 .. 31;
    end record;
 
-   subtype BWTR_ADDSET_Field is HAL.UInt4;
-   subtype BWTR_ADDHLD_Field is HAL.UInt4;
-   subtype BWTR_DATAST_Field is HAL.UInt8;
-   subtype BWTR_CLKDIV_Field is HAL.UInt4;
-   subtype BWTR_DATLAT_Field is HAL.UInt4;
-   subtype BWTR_ACCMOD_Field is HAL.UInt2;
+   subtype BWTR_ADDSET_Field is UInt4;
+   subtype BWTR_ADDHLD_Field is UInt4;
+   subtype BWTR_DATAST_Field is UInt8;
+   subtype BWTR_CLKDIV_Field is UInt4;
+   subtype BWTR_DATLAT_Field is UInt4;
+   subtype BWTR_ACCMOD_Field is UInt2;
 
    --  SRAM/NOR-Flash write timing registers 1
    type BWTR_Register is record
@@ -355,7 +355,7 @@ package STM32_SVD.FSMC is
       --  DATAST
       DATAST         : BWTR_DATAST_Field := 16#FF#;
       --  unspecified
-      Reserved_16_19 : HAL.UInt4 := 16#F#;
+      Reserved_16_19 : UInt4 := 16#F#;
       --  CLKDIV
       CLKDIV         : BWTR_CLKDIV_Field := 16#F#;
       --  DATLAT
@@ -363,7 +363,7 @@ package STM32_SVD.FSMC is
       --  ACCMOD
       ACCMOD         : BWTR_ACCMOD_Field := 16#0#;
       --  unspecified
-      Reserved_30_31 : HAL.UInt2 := 16#0#;
+      Reserved_30_31 : UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -410,7 +410,7 @@ package STM32_SVD.FSMC is
       --  Attribute memory space timing register 2
       PATT2 : aliased PATT_Register;
       --  ECC result register 2
-      ECCR2 : aliased HAL.UInt32;
+      ECCR2 : aliased UInt32;
       --  PC Card/NAND Flash control register 3
       PCR3  : aliased PCR_Register;
       --  FIFO status and interrupt register 3
@@ -420,7 +420,7 @@ package STM32_SVD.FSMC is
       --  Attribute memory space timing register 3
       PATT3 : aliased PATT_Register;
       --  ECC result register 3
-      ECCR3 : aliased HAL.UInt32;
+      ECCR3 : aliased UInt32;
       --  PC Card/NAND Flash control register 4
       PCR4  : aliased PCR_Register;
       --  FIFO status and interrupt register 4

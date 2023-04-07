@@ -4,7 +4,7 @@ pragma Restrictions (No_Elaboration_Code);
 pragma Ada_2012;
 pragma Style_Checks (Off);
 
-with HAL;
+with Beta_Types; use Beta_Types;
 with System;
 
 package STM32_SVD.SPI is
@@ -14,7 +14,7 @@ package STM32_SVD.SPI is
    -- Registers --
    ---------------
 
-   subtype CR1_BR_Field is HAL.UInt3;
+   subtype CR1_BR_Field is UInt3;
 
    --  control register 1
    type CR1_Register is record
@@ -47,7 +47,7 @@ package STM32_SVD.SPI is
       --  Bidirectional data mode enable
       BIDIMODE       : Boolean := False;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -89,7 +89,7 @@ package STM32_SVD.SPI is
       --  Tx buffer empty interrupt enable
       TXEIE         : Boolean := False;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -127,7 +127,7 @@ package STM32_SVD.SPI is
       --  Read-only. TI frame format error
       TIFRFE        : Boolean := False;
       --  unspecified
-      Reserved_9_31 : HAL.UInt23 := 16#0#;
+      Reserved_9_31 : UInt23 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -145,14 +145,14 @@ package STM32_SVD.SPI is
       Reserved_9_31 at 0 range 9 .. 31;
    end record;
 
-   subtype DR_DR_Field is HAL.UInt16;
+   subtype DR_DR_Field is UInt16;
 
    --  data register
    type DR_Register is record
       --  Data register
       DR             : DR_DR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -162,14 +162,14 @@ package STM32_SVD.SPI is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CRCPR_CRCPOLY_Field is HAL.UInt16;
+   subtype CRCPR_CRCPOLY_Field is UInt16;
 
    --  CRC polynomial register
    type CRCPR_Register is record
       --  CRC polynomial register
       CRCPOLY        : CRCPR_CRCPOLY_Field := 16#7#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -179,14 +179,14 @@ package STM32_SVD.SPI is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype RXCRCR_RxCRC_Field is HAL.UInt16;
+   subtype RXCRCR_RxCRC_Field is UInt16;
 
    --  RX CRC register
    type RXCRCR_Register is record
       --  Read-only. Rx CRC register
       RxCRC          : RXCRCR_RxCRC_Field;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16;
+      Reserved_16_31 : UInt16;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -196,14 +196,14 @@ package STM32_SVD.SPI is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype TXCRCR_TxCRC_Field is HAL.UInt16;
+   subtype TXCRCR_TxCRC_Field is UInt16;
 
    --  TX CRC register
    type TXCRCR_Register is record
       --  Read-only. Tx CRC register
       TxCRC          : TXCRCR_TxCRC_Field;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16;
+      Reserved_16_31 : UInt16;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -213,9 +213,9 @@ package STM32_SVD.SPI is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype I2SCFGR_DATLEN_Field is HAL.UInt2;
-   subtype I2SCFGR_I2SSTD_Field is HAL.UInt2;
-   subtype I2SCFGR_I2SCFG_Field is HAL.UInt2;
+   subtype I2SCFGR_DATLEN_Field is UInt2;
+   subtype I2SCFGR_I2SSTD_Field is UInt2;
+   subtype I2SCFGR_I2SCFG_Field is UInt2;
 
    --  I2S configuration register
    type I2SCFGR_Register is record
@@ -238,7 +238,7 @@ package STM32_SVD.SPI is
       --  I2S mode selection
       I2SMOD         : Boolean := False;
       --  unspecified
-      Reserved_12_31 : HAL.UInt20 := 16#0#;
+      Reserved_12_31 : UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -256,7 +256,7 @@ package STM32_SVD.SPI is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype I2SPR_I2SDIV_Field is HAL.UInt8;
+   subtype I2SPR_I2SDIV_Field is UInt8;
 
    --  I2S prescaler register
    type I2SPR_Register is record
@@ -267,7 +267,7 @@ package STM32_SVD.SPI is
       --  Master clock output enable
       MCKOE          : Boolean := False;
       --  unspecified
-      Reserved_10_31 : HAL.UInt22 := 16#0#;
+      Reserved_10_31 : UInt22 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;

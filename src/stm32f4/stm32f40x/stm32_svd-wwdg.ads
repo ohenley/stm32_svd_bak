@@ -4,7 +4,7 @@ pragma Restrictions (No_Elaboration_Code);
 pragma Ada_2012;
 pragma Style_Checks (Off);
 
-with HAL;
+with Beta_Types; use Beta_Types;
 with System;
 
 package STM32_SVD.WWDG is
@@ -14,7 +14,7 @@ package STM32_SVD.WWDG is
    -- Registers --
    ---------------
 
-   subtype CR_T_Field is HAL.UInt7;
+   subtype CR_T_Field is UInt7;
 
    --  Control register
    type CR_Register is record
@@ -23,7 +23,7 @@ package STM32_SVD.WWDG is
       --  Activation bit
       WDGA          : Boolean := False;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -34,7 +34,7 @@ package STM32_SVD.WWDG is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype CFR_W_Field is HAL.UInt7;
+   subtype CFR_W_Field is UInt7;
 
    --  CFR_WDGTB array
    type CFR_WDGTB_Field_Array is array (0 .. 1) of Boolean
@@ -47,7 +47,7 @@ package STM32_SVD.WWDG is
       case As_Array is
          when False =>
             --  WDGTB as a value
-            Val : HAL.UInt2;
+            Val : UInt2;
          when True =>
             --  WDGTB as an array
             Arr : CFR_WDGTB_Field_Array;
@@ -69,7 +69,7 @@ package STM32_SVD.WWDG is
       --  Early wakeup interrupt
       EWI            : Boolean := False;
       --  unspecified
-      Reserved_10_31 : HAL.UInt22 := 16#0#;
+      Reserved_10_31 : UInt22 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -86,7 +86,7 @@ package STM32_SVD.WWDG is
       --  Early wakeup interrupt flag
       EWIF          : Boolean := False;
       --  unspecified
-      Reserved_1_31 : HAL.UInt31 := 16#0#;
+      Reserved_1_31 : UInt31 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;

@@ -4,7 +4,7 @@ pragma Restrictions (No_Elaboration_Code);
 pragma Ada_2012;
 pragma Style_Checks (Off);
 
-with HAL;
+with Beta_Types; use Beta_Types;
 with System;
 
 package STM32_SVD.SYSCFG is
@@ -14,14 +14,14 @@ package STM32_SVD.SYSCFG is
    -- Registers --
    ---------------
 
-   subtype MEMRM_MEM_MODE_Field is HAL.UInt2;
+   subtype MEMRM_MEM_MODE_Field is UInt2;
 
    --  memory remap register
    type MEMRM_Register is record
       --  MEM_MODE
       MEM_MODE      : MEMRM_MEM_MODE_Field := 16#0#;
       --  unspecified
-      Reserved_2_31 : HAL.UInt30 := 16#0#;
+      Reserved_2_31 : UInt30 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -34,11 +34,11 @@ package STM32_SVD.SYSCFG is
    --  peripheral mode configuration register
    type PMC_Register is record
       --  unspecified
-      Reserved_0_22  : HAL.UInt23 := 16#0#;
+      Reserved_0_22  : UInt23 := 16#0#;
       --  Ethernet PHY interface selection
       MII_RMII_SEL   : Boolean := False;
       --  unspecified
-      Reserved_24_31 : HAL.UInt8 := 16#0#;
+      Reserved_24_31 : UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -50,7 +50,7 @@ package STM32_SVD.SYSCFG is
    end record;
 
    --  EXTICR1_EXTI array element
-   subtype EXTICR1_EXTI_Element is HAL.UInt4;
+   subtype EXTICR1_EXTI_Element is UInt4;
 
    --  EXTICR1_EXTI array
    type EXTICR1_EXTI_Field_Array is array (0 .. 3) of EXTICR1_EXTI_Element
@@ -63,7 +63,7 @@ package STM32_SVD.SYSCFG is
       case As_Array is
          when False =>
             --  EXTI as a value
-            Val : HAL.UInt16;
+            Val : UInt16;
          when True =>
             --  EXTI as an array
             Arr : EXTICR1_EXTI_Field_Array;
@@ -82,7 +82,7 @@ package STM32_SVD.SYSCFG is
       EXTI           : EXTICR1_EXTI_Field :=
                         (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -93,7 +93,7 @@ package STM32_SVD.SYSCFG is
    end record;
 
    --  EXTICR2_EXTI array element
-   subtype EXTICR2_EXTI_Element is HAL.UInt4;
+   subtype EXTICR2_EXTI_Element is UInt4;
 
    --  EXTICR2_EXTI array
    type EXTICR2_EXTI_Field_Array is array (4 .. 7) of EXTICR2_EXTI_Element
@@ -106,7 +106,7 @@ package STM32_SVD.SYSCFG is
       case As_Array is
          when False =>
             --  EXTI as a value
-            Val : HAL.UInt16;
+            Val : UInt16;
          when True =>
             --  EXTI as an array
             Arr : EXTICR2_EXTI_Field_Array;
@@ -125,7 +125,7 @@ package STM32_SVD.SYSCFG is
       EXTI           : EXTICR2_EXTI_Field :=
                         (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -136,7 +136,7 @@ package STM32_SVD.SYSCFG is
    end record;
 
    --  EXTICR3_EXTI array element
-   subtype EXTICR3_EXTI_Element is HAL.UInt4;
+   subtype EXTICR3_EXTI_Element is UInt4;
 
    --  EXTICR3_EXTI array
    type EXTICR3_EXTI_Field_Array is array (8 .. 11) of EXTICR3_EXTI_Element
@@ -149,7 +149,7 @@ package STM32_SVD.SYSCFG is
       case As_Array is
          when False =>
             --  EXTI as a value
-            Val : HAL.UInt16;
+            Val : UInt16;
          when True =>
             --  EXTI as an array
             Arr : EXTICR3_EXTI_Field_Array;
@@ -168,7 +168,7 @@ package STM32_SVD.SYSCFG is
       EXTI           : EXTICR3_EXTI_Field :=
                         (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -179,7 +179,7 @@ package STM32_SVD.SYSCFG is
    end record;
 
    --  EXTICR4_EXTI array element
-   subtype EXTICR4_EXTI_Element is HAL.UInt4;
+   subtype EXTICR4_EXTI_Element is UInt4;
 
    --  EXTICR4_EXTI array
    type EXTICR4_EXTI_Field_Array is array (12 .. 15) of EXTICR4_EXTI_Element
@@ -192,7 +192,7 @@ package STM32_SVD.SYSCFG is
       case As_Array is
          when False =>
             --  EXTI as a value
-            Val : HAL.UInt16;
+            Val : UInt16;
          when True =>
             --  EXTI as an array
             Arr : EXTICR4_EXTI_Field_Array;
@@ -211,7 +211,7 @@ package STM32_SVD.SYSCFG is
       EXTI           : EXTICR4_EXTI_Field :=
                         (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -226,11 +226,11 @@ package STM32_SVD.SYSCFG is
       --  Read-only. Compensation cell power-down
       CMP_PD        : Boolean;
       --  unspecified
-      Reserved_1_7  : HAL.UInt7;
+      Reserved_1_7  : UInt7;
       --  Read-only. READY
       READY         : Boolean;
       --  unspecified
-      Reserved_9_31 : HAL.UInt23;
+      Reserved_9_31 : UInt23;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;

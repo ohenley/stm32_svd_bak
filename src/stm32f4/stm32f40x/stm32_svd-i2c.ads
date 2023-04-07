@@ -4,7 +4,7 @@ pragma Restrictions (No_Elaboration_Code);
 pragma Ada_2012;
 pragma Style_Checks (Off);
 
-with HAL;
+with Beta_Types; use Beta_Types;
 with System;
 
 package STM32_SVD.I2C is
@@ -49,7 +49,7 @@ package STM32_SVD.I2C is
       --  Software reset
       SWRST          : Boolean := False;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -74,14 +74,14 @@ package STM32_SVD.I2C is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CR2_FREQ_Field is HAL.UInt6;
+   subtype CR2_FREQ_Field is UInt6;
 
    --  Control register 2
    type CR2_Register is record
       --  Peripheral clock frequency
       FREQ           : CR2_FREQ_Field := 16#0#;
       --  unspecified
-      Reserved_6_7   : HAL.UInt2 := 16#0#;
+      Reserved_6_7   : UInt2 := 16#0#;
       --  Error interrupt enable
       ITERREN        : Boolean := False;
       --  Event interrupt enable
@@ -93,7 +93,7 @@ package STM32_SVD.I2C is
       --  DMA last transfer
       LAST           : Boolean := False;
       --  unspecified
-      Reserved_13_31 : HAL.UInt19 := 16#0#;
+      Reserved_13_31 : UInt19 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -109,8 +109,8 @@ package STM32_SVD.I2C is
       Reserved_13_31 at 0 range 13 .. 31;
    end record;
 
-   subtype OAR1_ADD7_Field is HAL.UInt7;
-   subtype OAR1_ADD10_Field is HAL.UInt2;
+   subtype OAR1_ADD7_Field is UInt7;
+   subtype OAR1_ADD10_Field is UInt2;
 
    --  Own address register 1
    type OAR1_Register is record
@@ -121,11 +121,11 @@ package STM32_SVD.I2C is
       --  Interface address
       ADD10          : OAR1_ADD10_Field := 16#0#;
       --  unspecified
-      Reserved_10_14 : HAL.UInt5 := 16#0#;
+      Reserved_10_14 : UInt5 := 16#0#;
       --  Addressing mode (slave mode)
       ADDMODE        : Boolean := False;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -139,7 +139,7 @@ package STM32_SVD.I2C is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype OAR2_ADD2_Field is HAL.UInt7;
+   subtype OAR2_ADD2_Field is UInt7;
 
    --  Own address register 2
    type OAR2_Register is record
@@ -148,7 +148,7 @@ package STM32_SVD.I2C is
       --  Interface address
       ADD2          : OAR2_ADD2_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -159,14 +159,14 @@ package STM32_SVD.I2C is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype DR_DR_Field is HAL.UInt8;
+   subtype DR_DR_Field is UInt8;
 
    --  Data register
    type DR_Register is record
       --  8-bit data register
       DR            : DR_DR_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -211,7 +211,7 @@ package STM32_SVD.I2C is
       --  SMBus alert
       SMBALERT       : Boolean := False;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -236,7 +236,7 @@ package STM32_SVD.I2C is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype SR2_PEC_Field is HAL.UInt8;
+   subtype SR2_PEC_Field is UInt8;
 
    --  Status register 2
    type SR2_Register is record
@@ -259,7 +259,7 @@ package STM32_SVD.I2C is
       --  Read-only. acket error checking register
       PEC            : SR2_PEC_Field;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16;
+      Reserved_16_31 : UInt16;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -277,20 +277,20 @@ package STM32_SVD.I2C is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CCR_CCR_Field is HAL.UInt12;
+   subtype CCR_CCR_Field is UInt12;
 
    --  Clock control register
    type CCR_Register is record
       --  Clock control register in Fast/Standard mode (Master mode)
       CCR            : CCR_CCR_Field := 16#0#;
       --  unspecified
-      Reserved_12_13 : HAL.UInt2 := 16#0#;
+      Reserved_12_13 : UInt2 := 16#0#;
       --  Fast mode duty cycle
       DUTY           : Boolean := False;
       --  I2C master mode selection
       F_S            : Boolean := False;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -303,14 +303,14 @@ package STM32_SVD.I2C is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype TRISE_TRISE_Field is HAL.UInt6;
+   subtype TRISE_TRISE_Field is UInt6;
 
    --  TRISE register
    type TRISE_Register is record
       --  Maximum rise time in Fast/Standard mode (Master mode)
       TRISE         : TRISE_TRISE_Field := 16#2#;
       --  unspecified
-      Reserved_6_31 : HAL.UInt26 := 16#0#;
+      Reserved_6_31 : UInt26 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;

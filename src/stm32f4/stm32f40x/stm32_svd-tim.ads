@@ -4,7 +4,7 @@ pragma Restrictions (No_Elaboration_Code);
 pragma Ada_2012;
 pragma Style_Checks (Off);
 
-with HAL;
+with Beta_Types; use Beta_Types;
 with System;
 
 package STM32_SVD.TIM is
@@ -14,8 +14,8 @@ package STM32_SVD.TIM is
    -- Registers --
    ---------------
 
-   subtype CR1_CMS_Field is HAL.UInt2;
-   subtype CR1_CKD_Field is HAL.UInt2;
+   subtype CR1_CMS_Field is UInt2;
+   subtype CR1_CKD_Field is UInt2;
 
    --  control register 1
    type CR1_Register is record
@@ -36,7 +36,7 @@ package STM32_SVD.TIM is
       --  Clock division
       CKD            : CR1_CKD_Field := 16#0#;
       --  unspecified
-      Reserved_10_31 : HAL.UInt22 := 16#0#;
+      Reserved_10_31 : UInt22 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -53,7 +53,7 @@ package STM32_SVD.TIM is
       Reserved_10_31 at 0 range 10 .. 31;
    end record;
 
-   subtype CR2_MMS_Field is HAL.UInt3;
+   subtype CR2_MMS_Field is UInt3;
 
    --  control register 2
    type CR2_Register is record
@@ -84,7 +84,7 @@ package STM32_SVD.TIM is
       --  Output Idle state 4
       OIS4           : Boolean := False;
       --  unspecified
-      Reserved_15_31 : HAL.UInt17 := 16#0#;
+      Reserved_15_31 : UInt17 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -106,10 +106,10 @@ package STM32_SVD.TIM is
       Reserved_15_31 at 0 range 15 .. 31;
    end record;
 
-   subtype SMCR_SMS_Field is HAL.UInt3;
-   subtype SMCR_TS_Field is HAL.UInt3;
-   subtype SMCR_ETF_Field is HAL.UInt4;
-   subtype SMCR_ETPS_Field is HAL.UInt2;
+   subtype SMCR_SMS_Field is UInt3;
+   subtype SMCR_TS_Field is UInt3;
+   subtype SMCR_ETF_Field is UInt4;
+   subtype SMCR_ETPS_Field is UInt2;
 
    --  slave mode control register
    type SMCR_Register is record
@@ -130,7 +130,7 @@ package STM32_SVD.TIM is
       --  External trigger polarity
       ETP            : Boolean := False;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -180,7 +180,7 @@ package STM32_SVD.TIM is
       --  Trigger DMA request enable
       TDE            : Boolean := False;
       --  unspecified
-      Reserved_15_31 : HAL.UInt17 := 16#0#;
+      Reserved_15_31 : UInt17 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -233,7 +233,7 @@ package STM32_SVD.TIM is
       --  Capture/Compare 4 overcapture flag
       CC4OF          : Boolean := False;
       --  unspecified
-      Reserved_13_31 : HAL.UInt19 := 16#0#;
+      Reserved_13_31 : UInt19 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -274,7 +274,7 @@ package STM32_SVD.TIM is
       --  Write-only. Break generation
       BG            : Boolean := False;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -291,10 +291,10 @@ package STM32_SVD.TIM is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype CCMR1_Output_CC1S_Field is HAL.UInt2;
-   subtype CCMR1_Output_OC1M_Field is HAL.UInt3;
-   subtype CCMR1_Output_CC2S_Field is HAL.UInt2;
-   subtype CCMR1_Output_OC2M_Field is HAL.UInt3;
+   subtype CCMR1_Output_CC1S_Field is UInt2;
+   subtype CCMR1_Output_OC1M_Field is UInt3;
+   subtype CCMR1_Output_CC2S_Field is UInt2;
+   subtype CCMR1_Output_OC2M_Field is UInt3;
 
    --  capture/compare mode register 1 (output mode)
    type CCMR1_Output_Register is record
@@ -319,7 +319,7 @@ package STM32_SVD.TIM is
       --  Output Compare 2 clear enable
       OC2CE          : Boolean := False;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -338,12 +338,12 @@ package STM32_SVD.TIM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CCMR1_Input_CC1S_Field is HAL.UInt2;
-   subtype CCMR1_Input_ICPCS_Field is HAL.UInt2;
-   subtype CCMR1_Input_IC1F_Field is HAL.UInt4;
-   subtype CCMR1_Input_CC2S_Field is HAL.UInt2;
-   subtype CCMR1_Input_IC2PCS_Field is HAL.UInt2;
-   subtype CCMR1_Input_IC2F_Field is HAL.UInt4;
+   subtype CCMR1_Input_CC1S_Field is UInt2;
+   subtype CCMR1_Input_ICPCS_Field is UInt2;
+   subtype CCMR1_Input_IC1F_Field is UInt4;
+   subtype CCMR1_Input_CC2S_Field is UInt2;
+   subtype CCMR1_Input_IC2PCS_Field is UInt2;
+   subtype CCMR1_Input_IC2F_Field is UInt4;
 
    --  capture/compare mode register 1 (input mode)
    type CCMR1_Input_Register is record
@@ -360,7 +360,7 @@ package STM32_SVD.TIM is
       --  Input capture 2 filter
       IC2F           : CCMR1_Input_IC2F_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -375,10 +375,10 @@ package STM32_SVD.TIM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CCMR2_Output_CC3S_Field is HAL.UInt2;
-   subtype CCMR2_Output_OC3M_Field is HAL.UInt3;
-   subtype CCMR2_Output_CC4S_Field is HAL.UInt2;
-   subtype CCMR2_Output_OC4M_Field is HAL.UInt3;
+   subtype CCMR2_Output_CC3S_Field is UInt2;
+   subtype CCMR2_Output_OC3M_Field is UInt3;
+   subtype CCMR2_Output_CC4S_Field is UInt2;
+   subtype CCMR2_Output_OC4M_Field is UInt3;
 
    --  capture/compare mode register 2 (output mode)
    type CCMR2_Output_Register is record
@@ -403,7 +403,7 @@ package STM32_SVD.TIM is
       --  Output compare 4 clear enable
       OC4CE          : Boolean := False;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -422,12 +422,12 @@ package STM32_SVD.TIM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CCMR2_Input_CC3S_Field is HAL.UInt2;
-   subtype CCMR2_Input_IC3PSC_Field is HAL.UInt2;
-   subtype CCMR2_Input_IC3F_Field is HAL.UInt4;
-   subtype CCMR2_Input_CC4S_Field is HAL.UInt2;
-   subtype CCMR2_Input_IC4PSC_Field is HAL.UInt2;
-   subtype CCMR2_Input_IC4F_Field is HAL.UInt4;
+   subtype CCMR2_Input_CC3S_Field is UInt2;
+   subtype CCMR2_Input_IC3PSC_Field is UInt2;
+   subtype CCMR2_Input_IC3F_Field is UInt4;
+   subtype CCMR2_Input_CC4S_Field is UInt2;
+   subtype CCMR2_Input_IC4PSC_Field is UInt2;
+   subtype CCMR2_Input_IC4F_Field is UInt4;
 
    --  capture/compare mode register 2 (input mode)
    type CCMR2_Input_Register is record
@@ -444,7 +444,7 @@ package STM32_SVD.TIM is
       --  Input capture 4 filter
       IC4F           : CCMR2_Input_IC4F_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -490,7 +490,7 @@ package STM32_SVD.TIM is
       --  Capture/Compare 3 output Polarity
       CC4P           : Boolean := False;
       --  unspecified
-      Reserved_14_31 : HAL.UInt18 := 16#0#;
+      Reserved_14_31 : UInt18 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -513,14 +513,14 @@ package STM32_SVD.TIM is
       Reserved_14_31 at 0 range 14 .. 31;
    end record;
 
-   subtype CNT_CNT_Field is HAL.UInt16;
+   subtype CNT_CNT_Field is UInt16;
 
    --  counter
    type CNT_Register is record
       --  counter value
       CNT            : CNT_CNT_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -530,14 +530,14 @@ package STM32_SVD.TIM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype PSC_PSC_Field is HAL.UInt16;
+   subtype PSC_PSC_Field is UInt16;
 
    --  prescaler
    type PSC_Register is record
       --  Prescaler value
       PSC            : PSC_PSC_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -547,14 +547,14 @@ package STM32_SVD.TIM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype ARR_ARR_Field is HAL.UInt16;
+   subtype ARR_ARR_Field is UInt16;
 
    --  auto-reload register
    type ARR_Register is record
       --  Auto-reload value
       ARR            : ARR_ARR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -564,14 +564,14 @@ package STM32_SVD.TIM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype RCR_REP_Field is HAL.UInt8;
+   subtype RCR_REP_Field is UInt8;
 
    --  repetition counter register
    type RCR_Register is record
       --  Repetition counter value
       REP           : RCR_REP_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -581,14 +581,14 @@ package STM32_SVD.TIM is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype CCR1_CCR1_Field is HAL.UInt16;
+   subtype CCR1_CCR1_Field is UInt16;
 
    --  capture/compare register 1
    type CCR1_Register is record
       --  Capture/Compare 1 value
       CCR1           : CCR1_CCR1_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -598,14 +598,14 @@ package STM32_SVD.TIM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CCR2_CCR2_Field is HAL.UInt16;
+   subtype CCR2_CCR2_Field is UInt16;
 
    --  capture/compare register 2
    type CCR2_Register is record
       --  Capture/Compare 2 value
       CCR2           : CCR2_CCR2_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -615,14 +615,14 @@ package STM32_SVD.TIM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CCR3_CCR3_Field is HAL.UInt16;
+   subtype CCR3_CCR3_Field is UInt16;
 
    --  capture/compare register 3
    type CCR3_Register is record
       --  Capture/Compare value
       CCR3           : CCR3_CCR3_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -632,14 +632,14 @@ package STM32_SVD.TIM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CCR4_CCR4_Field is HAL.UInt16;
+   subtype CCR4_CCR4_Field is UInt16;
 
    --  capture/compare register 4
    type CCR4_Register is record
       --  Capture/Compare value
       CCR4           : CCR4_CCR4_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -649,8 +649,8 @@ package STM32_SVD.TIM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype BDTR_DTG_Field is HAL.UInt8;
-   subtype BDTR_LOCK_Field is HAL.UInt2;
+   subtype BDTR_DTG_Field is UInt8;
+   subtype BDTR_LOCK_Field is UInt2;
 
    --  break and dead-time register
    type BDTR_Register is record
@@ -671,7 +671,7 @@ package STM32_SVD.TIM is
       --  Main output enable
       MOE            : Boolean := False;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -688,19 +688,19 @@ package STM32_SVD.TIM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype DCR_DBA_Field is HAL.UInt5;
-   subtype DCR_DBL_Field is HAL.UInt5;
+   subtype DCR_DBA_Field is UInt5;
+   subtype DCR_DBL_Field is UInt5;
 
    --  DMA control register
    type DCR_Register is record
       --  DMA base address
       DBA            : DCR_DBA_Field := 16#0#;
       --  unspecified
-      Reserved_5_7   : HAL.UInt3 := 16#0#;
+      Reserved_5_7   : UInt3 := 16#0#;
       --  DMA burst length
       DBL            : DCR_DBL_Field := 16#0#;
       --  unspecified
-      Reserved_13_31 : HAL.UInt19 := 16#0#;
+      Reserved_13_31 : UInt19 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -712,14 +712,14 @@ package STM32_SVD.TIM is
       Reserved_13_31 at 0 range 13 .. 31;
    end record;
 
-   subtype DMAR_DMAB_Field is HAL.UInt16;
+   subtype DMAR_DMAB_Field is UInt16;
 
    --  DMA address for full transfer
    type DMAR_Register is record
       --  DMA register for burst accesses
       DMAB           : DMAR_DMAB_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -732,7 +732,7 @@ package STM32_SVD.TIM is
    --  control register 2
    type CR2_Register_1 is record
       --  unspecified
-      Reserved_0_2  : HAL.UInt3 := 16#0#;
+      Reserved_0_2  : UInt3 := 16#0#;
       --  Capture/compare DMA selection
       CCDS          : Boolean := False;
       --  Master mode selection
@@ -740,7 +740,7 @@ package STM32_SVD.TIM is
       --  TI1 selection
       TI1S          : Boolean := False;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -786,7 +786,7 @@ package STM32_SVD.TIM is
       --  Trigger DMA request enable
       TDE            : Boolean := False;
       --  unspecified
-      Reserved_15_31 : HAL.UInt17 := 16#0#;
+      Reserved_15_31 : UInt17 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -827,7 +827,7 @@ package STM32_SVD.TIM is
       --  Trigger interrupt flag
       TIF            : Boolean := False;
       --  unspecified
-      Reserved_7_8   : HAL.UInt2 := 16#0#;
+      Reserved_7_8   : UInt2 := 16#0#;
       --  Capture/Compare 1 overcapture flag
       CC1OF          : Boolean := False;
       --  Capture/compare 2 overcapture flag
@@ -837,7 +837,7 @@ package STM32_SVD.TIM is
       --  Capture/Compare 4 overcapture flag
       CC4OF          : Boolean := False;
       --  unspecified
-      Reserved_13_31 : HAL.UInt19 := 16#0#;
+      Reserved_13_31 : UInt19 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -875,7 +875,7 @@ package STM32_SVD.TIM is
       --  Write-only. Trigger generation
       TG            : Boolean := False;
       --  unspecified
-      Reserved_7_31 : HAL.UInt25 := 16#0#;
+      Reserved_7_31 : UInt25 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -914,7 +914,7 @@ package STM32_SVD.TIM is
       --  O24CE
       O24CE          : Boolean := False;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -968,7 +968,7 @@ package STM32_SVD.TIM is
       --  Capture/Compare 4 output Polarity
       CC4NP          : Boolean := False;
       --  unspecified
-      Reserved_16_31 : HAL.UInt16 := 16#0#;
+      Reserved_16_31 : UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -993,8 +993,8 @@ package STM32_SVD.TIM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CNT_CNT_L_Field is HAL.UInt16;
-   subtype CNT_CNT_H_Field is HAL.UInt16;
+   subtype CNT_CNT_L_Field is UInt16;
+   subtype CNT_CNT_H_Field is UInt16;
 
    --  counter
    type CNT_Register_1 is record
@@ -1011,8 +1011,8 @@ package STM32_SVD.TIM is
       CNT_H at 0 range 16 .. 31;
    end record;
 
-   subtype ARR_ARR_L_Field is HAL.UInt16;
-   subtype ARR_ARR_H_Field is HAL.UInt16;
+   subtype ARR_ARR_L_Field is UInt16;
+   subtype ARR_ARR_H_Field is UInt16;
 
    --  auto-reload register
    type ARR_Register_1 is record
@@ -1029,8 +1029,8 @@ package STM32_SVD.TIM is
       ARR_H at 0 range 16 .. 31;
    end record;
 
-   subtype CCR1_CCR1_L_Field is HAL.UInt16;
-   subtype CCR1_CCR1_H_Field is HAL.UInt16;
+   subtype CCR1_CCR1_L_Field is UInt16;
+   subtype CCR1_CCR1_H_Field is UInt16;
 
    --  capture/compare register 1
    type CCR1_Register_1 is record
@@ -1047,8 +1047,8 @@ package STM32_SVD.TIM is
       CCR1_H at 0 range 16 .. 31;
    end record;
 
-   subtype CCR2_CCR2_L_Field is HAL.UInt16;
-   subtype CCR2_CCR2_H_Field is HAL.UInt16;
+   subtype CCR2_CCR2_L_Field is UInt16;
+   subtype CCR2_CCR2_H_Field is UInt16;
 
    --  capture/compare register 2
    type CCR2_Register_1 is record
@@ -1065,8 +1065,8 @@ package STM32_SVD.TIM is
       CCR2_H at 0 range 16 .. 31;
    end record;
 
-   subtype CCR3_CCR3_L_Field is HAL.UInt16;
-   subtype CCR3_CCR3_H_Field is HAL.UInt16;
+   subtype CCR3_CCR3_L_Field is UInt16;
+   subtype CCR3_CCR3_H_Field is UInt16;
 
    --  capture/compare register 3
    type CCR3_Register_1 is record
@@ -1083,8 +1083,8 @@ package STM32_SVD.TIM is
       CCR3_H at 0 range 16 .. 31;
    end record;
 
-   subtype CCR4_CCR4_L_Field is HAL.UInt16;
-   subtype CCR4_CCR4_H_Field is HAL.UInt16;
+   subtype CCR4_CCR4_L_Field is UInt16;
+   subtype CCR4_CCR4_H_Field is UInt16;
 
    --  capture/compare register 4
    type CCR4_Register_1 is record
@@ -1101,16 +1101,16 @@ package STM32_SVD.TIM is
       CCR4_H at 0 range 16 .. 31;
    end record;
 
-   subtype OR_ITR1_RMP_Field is HAL.UInt2;
+   subtype OR_ITR1_RMP_Field is UInt2;
 
    --  TIM5 option register
    type OR_Register is record
       --  unspecified
-      Reserved_0_9   : HAL.UInt10 := 16#0#;
+      Reserved_0_9   : UInt10 := 16#0#;
       --  Timer Input 4 remap
       ITR1_RMP       : OR_ITR1_RMP_Field := 16#0#;
       --  unspecified
-      Reserved_12_31 : HAL.UInt20 := 16#0#;
+      Reserved_12_31 : UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1121,16 +1121,16 @@ package STM32_SVD.TIM is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype OR_IT4_RMP_Field is HAL.UInt2;
+   subtype OR_IT4_RMP_Field is UInt2;
 
    --  TIM5 option register
    type OR_Register_1 is record
       --  unspecified
-      Reserved_0_5  : HAL.UInt6 := 16#0#;
+      Reserved_0_5  : UInt6 := 16#0#;
       --  Timer Input 4 remap
       IT4_RMP       : OR_IT4_RMP_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1152,11 +1152,11 @@ package STM32_SVD.TIM is
       --  One-pulse mode
       OPM           : Boolean := False;
       --  unspecified
-      Reserved_4_6  : HAL.UInt3 := 16#0#;
+      Reserved_4_6  : UInt3 := 16#0#;
       --  Auto-reload preload enable
       ARPE          : Boolean := False;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1174,11 +1174,11 @@ package STM32_SVD.TIM is
    --  control register 2
    type CR2_Register_2 is record
       --  unspecified
-      Reserved_0_3  : HAL.UInt4 := 16#0#;
+      Reserved_0_3  : UInt4 := 16#0#;
       --  Master mode selection
       MMS           : CR2_MMS_Field := 16#0#;
       --  unspecified
-      Reserved_7_31 : HAL.UInt25 := 16#0#;
+      Reserved_7_31 : UInt25 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1194,11 +1194,11 @@ package STM32_SVD.TIM is
       --  Update interrupt enable
       UIE           : Boolean := False;
       --  unspecified
-      Reserved_1_7  : HAL.UInt7 := 16#0#;
+      Reserved_1_7  : UInt7 := 16#0#;
       --  Update DMA request enable
       UDE           : Boolean := False;
       --  unspecified
-      Reserved_9_31 : HAL.UInt23 := 16#0#;
+      Reserved_9_31 : UInt23 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1215,7 +1215,7 @@ package STM32_SVD.TIM is
       --  Update interrupt flag
       UIF           : Boolean := False;
       --  unspecified
-      Reserved_1_31 : HAL.UInt31 := 16#0#;
+      Reserved_1_31 : UInt31 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1230,7 +1230,7 @@ package STM32_SVD.TIM is
       --  Write-only. Update generation
       UG            : Boolean := False;
       --  unspecified
-      Reserved_1_31 : HAL.UInt31 := 16#0#;
+      Reserved_1_31 : UInt31 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1251,13 +1251,13 @@ package STM32_SVD.TIM is
       --  One-pulse mode
       OPM            : Boolean := False;
       --  unspecified
-      Reserved_4_6   : HAL.UInt3 := 16#0#;
+      Reserved_4_6   : UInt3 := 16#0#;
       --  Auto-reload preload enable
       ARPE           : Boolean := False;
       --  Clock division
       CKD            : CR1_CKD_Field := 16#0#;
       --  unspecified
-      Reserved_10_31 : HAL.UInt22 := 16#0#;
+      Reserved_10_31 : UInt22 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1284,7 +1284,7 @@ package STM32_SVD.TIM is
       --  Master/Slave mode
       MSM           : Boolean := False;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1306,11 +1306,11 @@ package STM32_SVD.TIM is
       --  Capture/Compare 2 interrupt enable
       CC2IE         : Boolean := False;
       --  unspecified
-      Reserved_3_5  : HAL.UInt3 := 16#0#;
+      Reserved_3_5  : UInt3 := 16#0#;
       --  Trigger interrupt enable
       TIE           : Boolean := False;
       --  unspecified
-      Reserved_7_31 : HAL.UInt25 := 16#0#;
+      Reserved_7_31 : UInt25 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1333,17 +1333,17 @@ package STM32_SVD.TIM is
       --  Capture/Compare 2 interrupt flag
       CC2IF          : Boolean := False;
       --  unspecified
-      Reserved_3_5   : HAL.UInt3 := 16#0#;
+      Reserved_3_5   : UInt3 := 16#0#;
       --  Trigger interrupt flag
       TIF            : Boolean := False;
       --  unspecified
-      Reserved_7_8   : HAL.UInt2 := 16#0#;
+      Reserved_7_8   : UInt2 := 16#0#;
       --  Capture/Compare 1 overcapture flag
       CC1OF          : Boolean := False;
       --  Capture/compare 2 overcapture flag
       CC2OF          : Boolean := False;
       --  unspecified
-      Reserved_11_31 : HAL.UInt21 := 16#0#;
+      Reserved_11_31 : UInt21 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1369,11 +1369,11 @@ package STM32_SVD.TIM is
       --  Write-only. Capture/compare 2 generation
       CC2G          : Boolean := False;
       --  unspecified
-      Reserved_3_5  : HAL.UInt3 := 16#0#;
+      Reserved_3_5  : UInt3 := 16#0#;
       --  Write-only. Trigger generation
       TG            : Boolean := False;
       --  unspecified
-      Reserved_7_31 : HAL.UInt25 := 16#0#;
+      Reserved_7_31 : UInt25 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1408,7 +1408,7 @@ package STM32_SVD.TIM is
       --  Output Compare 2 mode
       OC2M           : CCMR1_Output_OC2M_Field := 16#0#;
       --  unspecified
-      Reserved_15_31 : HAL.UInt17 := 16#0#;
+      Reserved_15_31 : UInt17 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1426,8 +1426,8 @@ package STM32_SVD.TIM is
       Reserved_15_31 at 0 range 15 .. 31;
    end record;
 
-   subtype CCMR1_Input_IC1F_Field_1 is HAL.UInt3;
-   subtype CCMR1_Input_IC2F_Field_1 is HAL.UInt3;
+   subtype CCMR1_Input_IC1F_Field_1 is UInt3;
+   subtype CCMR1_Input_IC2F_Field_1 is UInt3;
 
    --  capture/compare mode register 1 (input mode)
    type CCMR1_Input_Register_1 is record
@@ -1446,7 +1446,7 @@ package STM32_SVD.TIM is
       --  Input capture 2 filter
       IC2F           : CCMR1_Input_IC2F_Field_1 := 16#0#;
       --  unspecified
-      Reserved_15_31 : HAL.UInt17 := 16#0#;
+      Reserved_15_31 : UInt17 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1481,7 +1481,7 @@ package STM32_SVD.TIM is
       --  Capture/Compare 2 output Polarity
       CC2NP         : Boolean := False;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1507,13 +1507,13 @@ package STM32_SVD.TIM is
       --  Update request source
       URS            : Boolean := False;
       --  unspecified
-      Reserved_3_6   : HAL.UInt4 := 16#0#;
+      Reserved_3_6   : UInt4 := 16#0#;
       --  Auto-reload preload enable
       ARPE           : Boolean := False;
       --  Clock division
       CKD            : CR1_CKD_Field := 16#0#;
       --  unspecified
-      Reserved_10_31 : HAL.UInt22 := 16#0#;
+      Reserved_10_31 : UInt22 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1535,7 +1535,7 @@ package STM32_SVD.TIM is
       --  Capture/Compare 1 interrupt enable
       CC1IE         : Boolean := False;
       --  unspecified
-      Reserved_2_31 : HAL.UInt30 := 16#0#;
+      Reserved_2_31 : UInt30 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1553,11 +1553,11 @@ package STM32_SVD.TIM is
       --  Capture/compare 1 interrupt flag
       CC1IF          : Boolean := False;
       --  unspecified
-      Reserved_2_8   : HAL.UInt7 := 16#0#;
+      Reserved_2_8   : UInt7 := 16#0#;
       --  Capture/Compare 1 overcapture flag
       CC1OF          : Boolean := False;
       --  unspecified
-      Reserved_10_31 : HAL.UInt22 := 16#0#;
+      Reserved_10_31 : UInt22 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1577,7 +1577,7 @@ package STM32_SVD.TIM is
       --  Write-only. Capture/compare 1 generation
       CC1G          : Boolean := False;
       --  unspecified
-      Reserved_2_31 : HAL.UInt30 := 16#0#;
+      Reserved_2_31 : UInt30 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1599,7 +1599,7 @@ package STM32_SVD.TIM is
       --  Output Compare 1 mode
       OC1M          : CCMR1_Output_OC1M_Field := 16#0#;
       --  unspecified
-      Reserved_7_31 : HAL.UInt25 := 16#0#;
+      Reserved_7_31 : UInt25 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1621,7 +1621,7 @@ package STM32_SVD.TIM is
       --  Input capture 1 filter
       IC1F          : CCMR1_Input_IC1F_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1644,7 +1644,7 @@ package STM32_SVD.TIM is
       --  Capture/Compare 1 output Polarity
       CC1NP         : Boolean := False;
       --  unspecified
-      Reserved_4_31 : HAL.UInt28 := 16#0#;
+      Reserved_4_31 : UInt28 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1657,14 +1657,14 @@ package STM32_SVD.TIM is
       Reserved_4_31 at 0 range 4 .. 31;
    end record;
 
-   subtype OR_RMP_Field is HAL.UInt2;
+   subtype OR_RMP_Field is UInt2;
 
    --  option register
    type OR_Register_2 is record
       --  Input 1 remapping capability
       RMP           : OR_RMP_Field := 16#0#;
       --  unspecified
-      Reserved_2_31 : HAL.UInt30 := 16#0#;
+      Reserved_2_31 : UInt30 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;

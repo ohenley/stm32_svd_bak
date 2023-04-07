@@ -4,7 +4,7 @@ pragma Restrictions (No_Elaboration_Code);
 pragma Ada_2012;
 pragma Style_Checks (Off);
 
-with HAL;
+with Beta_Types; use Beta_Types;
 with System;
 
 package STM32_SVD.CRC is
@@ -14,14 +14,14 @@ package STM32_SVD.CRC is
    -- Registers --
    ---------------
 
-   subtype IDR_IDR_Field is HAL.UInt8;
+   subtype IDR_IDR_Field is UInt8;
 
    --  Independent Data register
    type IDR_Register is record
       --  Independent Data register
       IDR           : IDR_IDR_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : HAL.UInt24 := 16#0#;
+      Reserved_8_31 : UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -36,7 +36,7 @@ package STM32_SVD.CRC is
       --  Write-only. Control regidter
       CR            : Boolean := False;
       --  unspecified
-      Reserved_1_31 : HAL.UInt31 := 16#0#;
+      Reserved_1_31 : UInt31 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -53,7 +53,7 @@ package STM32_SVD.CRC is
    --  Cyclic Redundancy Check (CRC) unit
    type CRC_Peripheral is record
       --  Data register
-      DR  : aliased HAL.UInt32;
+      DR  : aliased UInt32;
       --  Independent Data register
       IDR : aliased IDR_Register;
       --  Control register

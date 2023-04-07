@@ -4,7 +4,7 @@ pragma Restrictions (No_Elaboration_Code);
 pragma Ada_2012;
 pragma Style_Checks (Off);
 
-with HAL;
+with Beta_Types; use Beta_Types;
 with System;
 
 package STM32_SVD.FLASH is
@@ -14,14 +14,14 @@ package STM32_SVD.FLASH is
    -- Registers --
    ---------------
 
-   subtype ACR_LATENCY_Field is HAL.UInt3;
+   subtype ACR_LATENCY_Field is UInt3;
 
    --  Flash access control register
    type ACR_Register is record
       --  Latency
       LATENCY        : ACR_LATENCY_Field := 16#0#;
       --  unspecified
-      Reserved_3_7   : HAL.UInt5 := 16#0#;
+      Reserved_3_7   : UInt5 := 16#0#;
       --  Prefetch enable
       PRFTEN         : Boolean := False;
       --  Instruction cache enable
@@ -33,7 +33,7 @@ package STM32_SVD.FLASH is
       --  Data cache reset
       DCRST          : Boolean := False;
       --  unspecified
-      Reserved_13_31 : HAL.UInt19 := 16#0#;
+      Reserved_13_31 : UInt19 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -56,7 +56,7 @@ package STM32_SVD.FLASH is
       --  Operation error
       OPERR          : Boolean := False;
       --  unspecified
-      Reserved_2_3   : HAL.UInt2 := 16#0#;
+      Reserved_2_3   : UInt2 := 16#0#;
       --  Write protection error
       WRPERR         : Boolean := False;
       --  Programming alignment error
@@ -66,11 +66,11 @@ package STM32_SVD.FLASH is
       --  Programming sequence error
       PGSERR         : Boolean := False;
       --  unspecified
-      Reserved_8_15  : HAL.UInt8 := 16#0#;
+      Reserved_8_15  : UInt8 := 16#0#;
       --  Read-only. Busy
       BSY            : Boolean := False;
       --  unspecified
-      Reserved_17_31 : HAL.UInt15 := 16#0#;
+      Reserved_17_31 : UInt15 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -88,8 +88,8 @@ package STM32_SVD.FLASH is
       Reserved_17_31 at 0 range 17 .. 31;
    end record;
 
-   subtype CR_SNB_Field is HAL.UInt4;
-   subtype CR_PSIZE_Field is HAL.UInt2;
+   subtype CR_SNB_Field is UInt4;
+   subtype CR_PSIZE_Field is UInt2;
 
    --  Control register
    type CR_Register is record
@@ -106,17 +106,17 @@ package STM32_SVD.FLASH is
       --  Program size
       PSIZE          : CR_PSIZE_Field := 16#0#;
       --  unspecified
-      Reserved_10_15 : HAL.UInt6 := 16#0#;
+      Reserved_10_15 : UInt6 := 16#0#;
       --  Start
       STRT           : Boolean := False;
       --  unspecified
-      Reserved_17_23 : HAL.UInt7 := 16#0#;
+      Reserved_17_23 : UInt7 := 16#0#;
       --  End of operation interrupt enable
       EOPIE          : Boolean := False;
       --  Error interrupt enable
       ERRIE          : Boolean := False;
       --  unspecified
-      Reserved_26_30 : HAL.UInt5 := 16#0#;
+      Reserved_26_30 : UInt5 := 16#0#;
       --  Lock
       LOCK           : Boolean := True;
    end record
@@ -139,9 +139,9 @@ package STM32_SVD.FLASH is
       LOCK           at 0 range 31 .. 31;
    end record;
 
-   subtype OPTCR_BOR_LEV_Field is HAL.UInt2;
-   subtype OPTCR_RDP_Field is HAL.UInt8;
-   subtype OPTCR_nWRP_Field is HAL.UInt12;
+   subtype OPTCR_BOR_LEV_Field is UInt2;
+   subtype OPTCR_RDP_Field is UInt8;
+   subtype OPTCR_nWRP_Field is UInt12;
 
    --  Flash option control register
    type OPTCR_Register is record
@@ -164,7 +164,7 @@ package STM32_SVD.FLASH is
       --  Not write protect
       nWRP           : OPTCR_nWRP_Field := 16#0#;
       --  unspecified
-      Reserved_28_31 : HAL.UInt4 := 16#0#;
+      Reserved_28_31 : UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -191,9 +191,9 @@ package STM32_SVD.FLASH is
       --  Flash access control register
       ACR     : aliased ACR_Register;
       --  Flash key register
-      KEYR    : aliased HAL.UInt32;
+      KEYR    : aliased UInt32;
       --  Flash option key register
-      OPTKEYR : aliased HAL.UInt32;
+      OPTKEYR : aliased UInt32;
       --  Status register
       SR      : aliased SR_Register;
       --  Control register

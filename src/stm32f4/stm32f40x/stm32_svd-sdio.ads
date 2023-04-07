@@ -4,7 +4,7 @@ pragma Restrictions (No_Elaboration_Code);
 pragma Ada_2012;
 pragma Style_Checks (Off);
 
-with HAL;
+with Beta_Types; use Beta_Types;
 with System;
 
 package STM32_SVD.SDIO is
@@ -31,7 +31,7 @@ package STM32_SVD.SDIO is
       --  PWRCTRL
       PWRCTRL       : POWER_PWRCTRL_Field := STM32_SVD.SDIO.Power_Off;
       --  unspecified
-      Reserved_2_31 : HAL.UInt30 := 16#0#;
+      Reserved_2_31 : UInt30 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -41,7 +41,7 @@ package STM32_SVD.SDIO is
       Reserved_2_31 at 0 range 2 .. 31;
    end record;
 
-   subtype CLKCR_CLKDIV_Field is HAL.UInt8;
+   subtype CLKCR_CLKDIV_Field is UInt8;
 
    --  Wide bus mode enable bit
    type CLKCR_WIDBUS_Field is
@@ -88,7 +88,7 @@ package STM32_SVD.SDIO is
       --  HW Flow Control enable
       HWFC_EN        : Boolean := False;
       --  unspecified
-      Reserved_15_31 : HAL.UInt17 := 16#0#;
+      Reserved_15_31 : UInt17 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -104,7 +104,7 @@ package STM32_SVD.SDIO is
       Reserved_15_31 at 0 range 15 .. 31;
    end record;
 
-   subtype CMD_CMDINDEX_Field is HAL.UInt6;
+   subtype CMD_CMDINDEX_Field is UInt6;
 
    --  Wait for response bits
    type CMD_WAITRESP_Field is
@@ -142,7 +142,7 @@ package STM32_SVD.SDIO is
       --  CE-ATA command
       CE_ATACMD      : Boolean := False;
       --  unspecified
-      Reserved_15_31 : HAL.UInt17 := 16#0#;
+      Reserved_15_31 : UInt17 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -160,14 +160,14 @@ package STM32_SVD.SDIO is
       Reserved_15_31 at 0 range 15 .. 31;
    end record;
 
-   subtype RESPCMD_RESPCMD_Field is HAL.UInt6;
+   subtype RESPCMD_RESPCMD_Field is UInt6;
 
    --  command response register
    type RESPCMD_Register is record
       --  Read-only. Response command index
       RESPCMD       : RESPCMD_RESPCMD_Field;
       --  unspecified
-      Reserved_6_31 : HAL.UInt26;
+      Reserved_6_31 : UInt26;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -177,14 +177,14 @@ package STM32_SVD.SDIO is
       Reserved_6_31 at 0 range 6 .. 31;
    end record;
 
-   subtype DLEN_DATALENGTH_Field is HAL.UInt25;
+   subtype DLEN_DATALENGTH_Field is UInt25;
 
    --  data length register
    type DLEN_Register is record
       --  Data length value
       DATALENGTH     : DLEN_DATALENGTH_Field := 16#0#;
       --  unspecified
-      Reserved_25_31 : HAL.UInt7 := 16#0#;
+      Reserved_25_31 : UInt7 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -291,7 +291,7 @@ package STM32_SVD.SDIO is
       --  SD I/O enable functions
       SDIOEN         : Boolean := False;
       --  unspecified
-      Reserved_12_31 : HAL.UInt20 := 16#0#;
+      Reserved_12_31 : UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -309,14 +309,14 @@ package STM32_SVD.SDIO is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype DCOUNT_DATACOUNT_Field is HAL.UInt25;
+   subtype DCOUNT_DATACOUNT_Field is UInt25;
 
    --  data counter register
    type DCOUNT_Register is record
       --  Read-only. Data count value
       DATACOUNT      : DCOUNT_DATACOUNT_Field;
       --  unspecified
-      Reserved_25_31 : HAL.UInt7;
+      Reserved_25_31 : UInt7;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -380,7 +380,7 @@ package STM32_SVD.SDIO is
       --  Read-only. CE-ATA command completion signal received for CMD61
       CEATAEND       : Boolean;
       --  unspecified
-      Reserved_24_31 : HAL.UInt8;
+      Reserved_24_31 : UInt8;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -438,13 +438,13 @@ package STM32_SVD.SDIO is
       --  DBCKEND flag clear bit
       DBCKENDC       : Boolean := False;
       --  unspecified
-      Reserved_11_21 : HAL.UInt11 := 16#0#;
+      Reserved_11_21 : UInt11 := 16#0#;
       --  SDIOIT flag clear bit
       SDIOITC        : Boolean := False;
       --  CEATAEND flag clear bit
       CEATAENDC      : Boolean := False;
       --  unspecified
-      Reserved_24_31 : HAL.UInt8 := 16#0#;
+      Reserved_24_31 : UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -518,7 +518,7 @@ package STM32_SVD.SDIO is
       --  CE-ATA command completion signal received interrupt enable
       CEATAENDIE     : Boolean := False;
       --  unspecified
-      Reserved_24_31 : HAL.UInt8 := 16#0#;
+      Reserved_24_31 : UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -551,7 +551,7 @@ package STM32_SVD.SDIO is
       Reserved_24_31 at 0 range 24 .. 31;
    end record;
 
-   subtype FIFOCNT_FIFOCOUNT_Field is HAL.UInt24;
+   subtype FIFOCNT_FIFOCOUNT_Field is UInt24;
 
    --  FIFO counter register
    type FIFOCNT_Register is record
@@ -559,7 +559,7 @@ package STM32_SVD.SDIO is
       --  the FIFO.
       FIFOCOUNT      : FIFOCNT_FIFOCOUNT_Field;
       --  unspecified
-      Reserved_24_31 : HAL.UInt8;
+      Reserved_24_31 : UInt8;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -580,21 +580,21 @@ package STM32_SVD.SDIO is
       --  SDI clock control register
       CLKCR   : aliased CLKCR_Register;
       --  argument register
-      ARG     : aliased HAL.UInt32;
+      ARG     : aliased UInt32;
       --  command register
       CMD     : aliased CMD_Register;
       --  command response register
       RESPCMD : aliased RESPCMD_Register;
       --  response 1..4 register
-      RESP1   : aliased HAL.UInt32;
+      RESP1   : aliased UInt32;
       --  response 1..4 register
-      RESP2   : aliased HAL.UInt32;
+      RESP2   : aliased UInt32;
       --  response 1..4 register
-      RESP3   : aliased HAL.UInt32;
+      RESP3   : aliased UInt32;
       --  response 1..4 register
-      RESP4   : aliased HAL.UInt32;
+      RESP4   : aliased UInt32;
       --  data timer register
-      DTIMER  : aliased HAL.UInt32;
+      DTIMER  : aliased UInt32;
       --  data length register
       DLEN    : aliased DLEN_Register;
       --  data control register
@@ -610,7 +610,7 @@ package STM32_SVD.SDIO is
       --  FIFO counter register
       FIFOCNT : aliased FIFOCNT_Register;
       --  data FIFO register
-      FIFO    : aliased HAL.UInt32;
+      FIFO    : aliased UInt32;
    end record
      with Volatile;
 

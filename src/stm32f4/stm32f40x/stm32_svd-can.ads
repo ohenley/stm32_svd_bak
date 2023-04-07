@@ -4,7 +4,7 @@ pragma Restrictions (No_Elaboration_Code);
 pragma Ada_2012;
 pragma Style_Checks (Off);
 
-with HAL;
+with Beta_Types; use Beta_Types;
 with System;
 
 package STM32_SVD.CAN is
@@ -33,13 +33,13 @@ package STM32_SVD.CAN is
       --  TTCM
       TTCM           : Boolean := False;
       --  unspecified
-      Reserved_8_14  : HAL.UInt7 := 16#0#;
+      Reserved_8_14  : UInt7 := 16#0#;
       --  RESET
       RESET          : Boolean := False;
       --  DBF
       DBF            : Boolean := True;
       --  unspecified
-      Reserved_17_31 : HAL.UInt15 := 16#0#;
+      Reserved_17_31 : UInt15 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -72,7 +72,7 @@ package STM32_SVD.CAN is
       --  SLAKI
       SLAKI          : Boolean := False;
       --  unspecified
-      Reserved_5_7   : HAL.UInt3 := 16#0#;
+      Reserved_5_7   : UInt3 := 16#0#;
       --  Read-only. TXM
       TXM            : Boolean := False;
       --  Read-only. RXM
@@ -82,7 +82,7 @@ package STM32_SVD.CAN is
       --  Read-only. RX
       RX             : Boolean := True;
       --  unspecified
-      Reserved_12_31 : HAL.UInt20 := 16#0#;
+      Reserved_12_31 : UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -101,7 +101,7 @@ package STM32_SVD.CAN is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype TSR_CODE_Field is HAL.UInt2;
+   subtype TSR_CODE_Field is UInt2;
 
    --  TSR_TME array
    type TSR_TME_Field_Array is array (0 .. 2) of Boolean
@@ -114,7 +114,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  TME as a value
-            Val : HAL.UInt3;
+            Val : UInt3;
          when True =>
             --  TME as an array
             Arr : TSR_TME_Field_Array;
@@ -138,7 +138,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  LOW as a value
-            Val : HAL.UInt3;
+            Val : UInt3;
          when True =>
             --  LOW as an array
             Arr : TSR_LOW_Field_Array;
@@ -162,7 +162,7 @@ package STM32_SVD.CAN is
       --  TERR0
       TERR0          : Boolean := False;
       --  unspecified
-      Reserved_4_6   : HAL.UInt3 := 16#0#;
+      Reserved_4_6   : UInt3 := 16#0#;
       --  ABRQ0
       ABRQ0          : Boolean := False;
       --  RQCP1
@@ -174,7 +174,7 @@ package STM32_SVD.CAN is
       --  TERR1
       TERR1          : Boolean := False;
       --  unspecified
-      Reserved_12_14 : HAL.UInt3 := 16#0#;
+      Reserved_12_14 : UInt3 := 16#0#;
       --  ABRQ1
       ABRQ1          : Boolean := False;
       --  RQCP2
@@ -186,7 +186,7 @@ package STM32_SVD.CAN is
       --  TERR2
       TERR2          : Boolean := False;
       --  unspecified
-      Reserved_20_22 : HAL.UInt3 := 16#0#;
+      Reserved_20_22 : UInt3 := 16#0#;
       --  ABRQ2
       ABRQ2          : Boolean := False;
       --  Read-only. CODE
@@ -223,7 +223,7 @@ package STM32_SVD.CAN is
       LOW            at 0 range 29 .. 31;
    end record;
 
-   subtype RF0R_FMP0_Field is HAL.UInt2;
+   subtype RF0R_FMP0_Field is UInt2;
 
    --  receive FIFO 0 register
    type RF0R_Register is record
@@ -238,7 +238,7 @@ package STM32_SVD.CAN is
       --  RFOM0
       RFOM0         : Boolean := False;
       --  unspecified
-      Reserved_6_31 : HAL.UInt26 := 16#0#;
+      Reserved_6_31 : UInt26 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -252,7 +252,7 @@ package STM32_SVD.CAN is
       Reserved_6_31 at 0 range 6 .. 31;
    end record;
 
-   subtype RF1R_FMP1_Field is HAL.UInt2;
+   subtype RF1R_FMP1_Field is UInt2;
 
    --  receive FIFO 1 register
    type RF1R_Register is record
@@ -267,7 +267,7 @@ package STM32_SVD.CAN is
       --  RFOM1
       RFOM1         : Boolean := False;
       --  unspecified
-      Reserved_6_31 : HAL.UInt26 := 16#0#;
+      Reserved_6_31 : UInt26 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -308,7 +308,7 @@ package STM32_SVD.CAN is
       --  LECIE
       LECIE          : Boolean := False;
       --  unspecified
-      Reserved_12_14 : HAL.UInt3 := 16#0#;
+      Reserved_12_14 : UInt3 := 16#0#;
       --  ERRIE
       ERRIE          : Boolean := False;
       --  WKUIE
@@ -316,7 +316,7 @@ package STM32_SVD.CAN is
       --  SLKIE
       SLKIE          : Boolean := False;
       --  unspecified
-      Reserved_18_31 : HAL.UInt14 := 16#0#;
+      Reserved_18_31 : UInt14 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -341,9 +341,9 @@ package STM32_SVD.CAN is
       Reserved_18_31 at 0 range 18 .. 31;
    end record;
 
-   subtype ESR_LEC_Field is HAL.UInt3;
-   subtype ESR_TEC_Field is HAL.UInt8;
-   subtype ESR_REC_Field is HAL.UInt8;
+   subtype ESR_LEC_Field is UInt3;
+   subtype ESR_TEC_Field is UInt8;
+   subtype ESR_REC_Field is UInt8;
 
    --  interrupt enable register
    type ESR_Register is record
@@ -358,7 +358,7 @@ package STM32_SVD.CAN is
       --  LEC
       LEC           : ESR_LEC_Field := 16#0#;
       --  unspecified
-      Reserved_7_15 : HAL.UInt9 := 16#0#;
+      Reserved_7_15 : UInt9 := 16#0#;
       --  Read-only. TEC
       TEC           : ESR_TEC_Field := 16#0#;
       --  Read-only. REC
@@ -378,17 +378,17 @@ package STM32_SVD.CAN is
       REC           at 0 range 24 .. 31;
    end record;
 
-   subtype BTR_BRP_Field is HAL.UInt10;
-   subtype BTR_TS1_Field is HAL.UInt4;
-   subtype BTR_TS2_Field is HAL.UInt3;
-   subtype BTR_SJW_Field is HAL.UInt2;
+   subtype BTR_BRP_Field is UInt10;
+   subtype BTR_TS1_Field is UInt4;
+   subtype BTR_TS2_Field is UInt3;
+   subtype BTR_SJW_Field is UInt2;
 
    --  bit timing register
    type BTR_Register is record
       --  BRP
       BRP            : BTR_BRP_Field := 16#0#;
       --  unspecified
-      Reserved_10_15 : HAL.UInt6 := 16#0#;
+      Reserved_10_15 : UInt6 := 16#0#;
       --  TS1
       TS1            : BTR_TS1_Field := 16#0#;
       --  TS2
@@ -398,7 +398,7 @@ package STM32_SVD.CAN is
       --  SJW
       SJW            : BTR_SJW_Field := 16#0#;
       --  unspecified
-      Reserved_26_29 : HAL.UInt4 := 16#0#;
+      Reserved_26_29 : UInt4 := 16#0#;
       --  LBKM
       LBKM           : Boolean := False;
       --  SILM
@@ -419,8 +419,8 @@ package STM32_SVD.CAN is
       SILM           at 0 range 31 .. 31;
    end record;
 
-   subtype TI0R_EXID_Field is HAL.UInt18;
-   subtype TI0R_STID_Field is HAL.UInt11;
+   subtype TI0R_EXID_Field is UInt18;
+   subtype TI0R_STID_Field is UInt11;
 
    --  TX mailbox identifier register
    type TI0R_Register is record
@@ -446,19 +446,19 @@ package STM32_SVD.CAN is
       STID at 0 range 21 .. 31;
    end record;
 
-   subtype TDT0R_DLC_Field is HAL.UInt4;
-   subtype TDT0R_TIME_Field is HAL.UInt16;
+   subtype TDT0R_DLC_Field is UInt4;
+   subtype TDT0R_TIME_Field is UInt16;
 
    --  mailbox data length control and time stamp register
    type TDT0R_Register is record
       --  DLC
       DLC           : TDT0R_DLC_Field := 16#0#;
       --  unspecified
-      Reserved_4_7  : HAL.UInt4 := 16#0#;
+      Reserved_4_7  : UInt4 := 16#0#;
       --  TGT
       TGT           : Boolean := False;
       --  unspecified
-      Reserved_9_15 : HAL.UInt7 := 16#0#;
+      Reserved_9_15 : UInt7 := 16#0#;
       --  TIME
       TIME          : TDT0R_TIME_Field := 16#0#;
    end record
@@ -474,7 +474,7 @@ package STM32_SVD.CAN is
    end record;
 
    --  TDL0R_DATA array element
-   subtype TDL0R_DATA_Element is HAL.UInt8;
+   subtype TDL0R_DATA_Element is UInt8;
 
    --  TDL0R_DATA array
    type TDL0R_DATA_Field_Array is array (0 .. 3) of TDL0R_DATA_Element
@@ -487,7 +487,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  DATA as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  DATA as an array
             Arr : TDL0R_DATA_Field_Array;
@@ -502,7 +502,7 @@ package STM32_SVD.CAN is
    end record;
 
    --  TDH0R_DATA array element
-   subtype TDH0R_DATA_Element is HAL.UInt8;
+   subtype TDH0R_DATA_Element is UInt8;
 
    --  TDH0R_DATA array
    type TDH0R_DATA_Field_Array is array (4 .. 7) of TDH0R_DATA_Element
@@ -515,7 +515,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  DATA as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  DATA as an array
             Arr : TDH0R_DATA_Field_Array;
@@ -529,8 +529,8 @@ package STM32_SVD.CAN is
       Arr at 0 range 0 .. 31;
    end record;
 
-   subtype TI1R_EXID_Field is HAL.UInt18;
-   subtype TI1R_STID_Field is HAL.UInt11;
+   subtype TI1R_EXID_Field is UInt18;
+   subtype TI1R_STID_Field is UInt11;
 
    --  mailbox identifier register
    type TI1R_Register is record
@@ -556,19 +556,19 @@ package STM32_SVD.CAN is
       STID at 0 range 21 .. 31;
    end record;
 
-   subtype TDT1R_DLC_Field is HAL.UInt4;
-   subtype TDT1R_TIME_Field is HAL.UInt16;
+   subtype TDT1R_DLC_Field is UInt4;
+   subtype TDT1R_TIME_Field is UInt16;
 
    --  mailbox data length control and time stamp register
    type TDT1R_Register is record
       --  DLC
       DLC           : TDT1R_DLC_Field := 16#0#;
       --  unspecified
-      Reserved_4_7  : HAL.UInt4 := 16#0#;
+      Reserved_4_7  : UInt4 := 16#0#;
       --  TGT
       TGT           : Boolean := False;
       --  unspecified
-      Reserved_9_15 : HAL.UInt7 := 16#0#;
+      Reserved_9_15 : UInt7 := 16#0#;
       --  TIME
       TIME          : TDT1R_TIME_Field := 16#0#;
    end record
@@ -584,7 +584,7 @@ package STM32_SVD.CAN is
    end record;
 
    --  TDL1R_DATA array element
-   subtype TDL1R_DATA_Element is HAL.UInt8;
+   subtype TDL1R_DATA_Element is UInt8;
 
    --  TDL1R_DATA array
    type TDL1R_DATA_Field_Array is array (0 .. 3) of TDL1R_DATA_Element
@@ -597,7 +597,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  DATA as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  DATA as an array
             Arr : TDL1R_DATA_Field_Array;
@@ -612,7 +612,7 @@ package STM32_SVD.CAN is
    end record;
 
    --  TDH1R_DATA array element
-   subtype TDH1R_DATA_Element is HAL.UInt8;
+   subtype TDH1R_DATA_Element is UInt8;
 
    --  TDH1R_DATA array
    type TDH1R_DATA_Field_Array is array (4 .. 7) of TDH1R_DATA_Element
@@ -625,7 +625,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  DATA as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  DATA as an array
             Arr : TDH1R_DATA_Field_Array;
@@ -639,8 +639,8 @@ package STM32_SVD.CAN is
       Arr at 0 range 0 .. 31;
    end record;
 
-   subtype TI2R_EXID_Field is HAL.UInt18;
-   subtype TI2R_STID_Field is HAL.UInt11;
+   subtype TI2R_EXID_Field is UInt18;
+   subtype TI2R_STID_Field is UInt11;
 
    --  mailbox identifier register
    type TI2R_Register is record
@@ -666,19 +666,19 @@ package STM32_SVD.CAN is
       STID at 0 range 21 .. 31;
    end record;
 
-   subtype TDT2R_DLC_Field is HAL.UInt4;
-   subtype TDT2R_TIME_Field is HAL.UInt16;
+   subtype TDT2R_DLC_Field is UInt4;
+   subtype TDT2R_TIME_Field is UInt16;
 
    --  mailbox data length control and time stamp register
    type TDT2R_Register is record
       --  DLC
       DLC           : TDT2R_DLC_Field := 16#0#;
       --  unspecified
-      Reserved_4_7  : HAL.UInt4 := 16#0#;
+      Reserved_4_7  : UInt4 := 16#0#;
       --  TGT
       TGT           : Boolean := False;
       --  unspecified
-      Reserved_9_15 : HAL.UInt7 := 16#0#;
+      Reserved_9_15 : UInt7 := 16#0#;
       --  TIME
       TIME          : TDT2R_TIME_Field := 16#0#;
    end record
@@ -694,7 +694,7 @@ package STM32_SVD.CAN is
    end record;
 
    --  TDL2R_DATA array element
-   subtype TDL2R_DATA_Element is HAL.UInt8;
+   subtype TDL2R_DATA_Element is UInt8;
 
    --  TDL2R_DATA array
    type TDL2R_DATA_Field_Array is array (0 .. 3) of TDL2R_DATA_Element
@@ -707,7 +707,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  DATA as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  DATA as an array
             Arr : TDL2R_DATA_Field_Array;
@@ -722,7 +722,7 @@ package STM32_SVD.CAN is
    end record;
 
    --  TDH2R_DATA array element
-   subtype TDH2R_DATA_Element is HAL.UInt8;
+   subtype TDH2R_DATA_Element is UInt8;
 
    --  TDH2R_DATA array
    type TDH2R_DATA_Field_Array is array (4 .. 7) of TDH2R_DATA_Element
@@ -735,7 +735,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  DATA as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  DATA as an array
             Arr : TDH2R_DATA_Field_Array;
@@ -749,8 +749,8 @@ package STM32_SVD.CAN is
       Arr at 0 range 0 .. 31;
    end record;
 
-   subtype RI0R_EXID_Field is HAL.UInt18;
-   subtype RI0R_STID_Field is HAL.UInt11;
+   subtype RI0R_EXID_Field is UInt18;
+   subtype RI0R_STID_Field is UInt11;
 
    --  receive FIFO mailbox identifier register
    type RI0R_Register is record
@@ -776,16 +776,16 @@ package STM32_SVD.CAN is
       STID         at 0 range 21 .. 31;
    end record;
 
-   subtype RDT0R_DLC_Field is HAL.UInt4;
-   subtype RDT0R_FMI_Field is HAL.UInt8;
-   subtype RDT0R_TIME_Field is HAL.UInt16;
+   subtype RDT0R_DLC_Field is UInt4;
+   subtype RDT0R_FMI_Field is UInt8;
+   subtype RDT0R_TIME_Field is UInt16;
 
    --  mailbox data high register
    type RDT0R_Register is record
       --  Read-only. DLC
       DLC          : RDT0R_DLC_Field;
       --  unspecified
-      Reserved_4_7 : HAL.UInt4;
+      Reserved_4_7 : UInt4;
       --  Read-only. FMI
       FMI          : RDT0R_FMI_Field;
       --  Read-only. TIME
@@ -802,7 +802,7 @@ package STM32_SVD.CAN is
    end record;
 
    --  RDL0R_DATA array element
-   subtype RDL0R_DATA_Element is HAL.UInt8;
+   subtype RDL0R_DATA_Element is UInt8;
 
    --  RDL0R_DATA array
    type RDL0R_DATA_Field_Array is array (0 .. 3) of RDL0R_DATA_Element
@@ -815,7 +815,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  DATA as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  DATA as an array
             Arr : RDL0R_DATA_Field_Array;
@@ -830,7 +830,7 @@ package STM32_SVD.CAN is
    end record;
 
    --  RDH0R_DATA array element
-   subtype RDH0R_DATA_Element is HAL.UInt8;
+   subtype RDH0R_DATA_Element is UInt8;
 
    --  RDH0R_DATA array
    type RDH0R_DATA_Field_Array is array (4 .. 7) of RDH0R_DATA_Element
@@ -843,7 +843,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  DATA as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  DATA as an array
             Arr : RDH0R_DATA_Field_Array;
@@ -857,8 +857,8 @@ package STM32_SVD.CAN is
       Arr at 0 range 0 .. 31;
    end record;
 
-   subtype RI1R_EXID_Field is HAL.UInt18;
-   subtype RI1R_STID_Field is HAL.UInt11;
+   subtype RI1R_EXID_Field is UInt18;
+   subtype RI1R_STID_Field is UInt11;
 
    --  mailbox data high register
    type RI1R_Register is record
@@ -884,16 +884,16 @@ package STM32_SVD.CAN is
       STID         at 0 range 21 .. 31;
    end record;
 
-   subtype RDT1R_DLC_Field is HAL.UInt4;
-   subtype RDT1R_FMI_Field is HAL.UInt8;
-   subtype RDT1R_TIME_Field is HAL.UInt16;
+   subtype RDT1R_DLC_Field is UInt4;
+   subtype RDT1R_FMI_Field is UInt8;
+   subtype RDT1R_TIME_Field is UInt16;
 
    --  mailbox data high register
    type RDT1R_Register is record
       --  Read-only. DLC
       DLC          : RDT1R_DLC_Field;
       --  unspecified
-      Reserved_4_7 : HAL.UInt4;
+      Reserved_4_7 : UInt4;
       --  Read-only. FMI
       FMI          : RDT1R_FMI_Field;
       --  Read-only. TIME
@@ -910,7 +910,7 @@ package STM32_SVD.CAN is
    end record;
 
    --  RDL1R_DATA array element
-   subtype RDL1R_DATA_Element is HAL.UInt8;
+   subtype RDL1R_DATA_Element is UInt8;
 
    --  RDL1R_DATA array
    type RDL1R_DATA_Field_Array is array (0 .. 3) of RDL1R_DATA_Element
@@ -923,7 +923,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  DATA as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  DATA as an array
             Arr : RDL1R_DATA_Field_Array;
@@ -938,7 +938,7 @@ package STM32_SVD.CAN is
    end record;
 
    --  RDH1R_DATA array element
-   subtype RDH1R_DATA_Element is HAL.UInt8;
+   subtype RDH1R_DATA_Element is UInt8;
 
    --  RDH1R_DATA array
    type RDH1R_DATA_Field_Array is array (4 .. 7) of RDH1R_DATA_Element
@@ -951,7 +951,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  DATA as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  DATA as an array
             Arr : RDH1R_DATA_Field_Array;
@@ -965,18 +965,18 @@ package STM32_SVD.CAN is
       Arr at 0 range 0 .. 31;
    end record;
 
-   subtype FMR_CAN2SB_Field is HAL.UInt6;
+   subtype FMR_CAN2SB_Field is UInt6;
 
    --  filter master register
    type FMR_Register is record
       --  FINIT
       FINIT          : Boolean := True;
       --  unspecified
-      Reserved_1_7   : HAL.UInt7 := 16#0#;
+      Reserved_1_7   : UInt7 := 16#0#;
       --  CAN2SB
       CAN2SB         : FMR_CAN2SB_Field := 16#E#;
       --  unspecified
-      Reserved_14_31 : HAL.UInt18 := 16#A870#;
+      Reserved_14_31 : UInt18 := 16#A870#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -999,7 +999,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FBM as a value
-            Val : HAL.UInt28;
+            Val : UInt28;
          when True =>
             --  FBM as an array
             Arr : FM1R_FBM_Field_Array;
@@ -1017,7 +1017,7 @@ package STM32_SVD.CAN is
       --  Filter mode
       FBM            : FM1R_FBM_Field := (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_28_31 : HAL.UInt4 := 16#0#;
+      Reserved_28_31 : UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1038,7 +1038,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FSC as a value
-            Val : HAL.UInt28;
+            Val : UInt28;
          when True =>
             --  FSC as an array
             Arr : FS1R_FSC_Field_Array;
@@ -1056,7 +1056,7 @@ package STM32_SVD.CAN is
       --  Filter scale configuration
       FSC            : FS1R_FSC_Field := (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_28_31 : HAL.UInt4 := 16#0#;
+      Reserved_28_31 : UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1077,7 +1077,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FFA as a value
-            Val : HAL.UInt28;
+            Val : UInt28;
          when True =>
             --  FFA as an array
             Arr : FFA1R_FFA_Field_Array;
@@ -1095,7 +1095,7 @@ package STM32_SVD.CAN is
       --  Filter FIFO assignment for filter 0
       FFA            : FFA1R_FFA_Field := (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_28_31 : HAL.UInt4 := 16#0#;
+      Reserved_28_31 : UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1116,7 +1116,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FACT as a value
-            Val : HAL.UInt28;
+            Val : UInt28;
          when True =>
             --  FACT as an array
             Arr : FA1R_FACT_Field_Array;
@@ -1134,7 +1134,7 @@ package STM32_SVD.CAN is
       --  Filter active
       FACT           : FA1R_FACT_Field := (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_28_31 : HAL.UInt4 := 16#0#;
+      Reserved_28_31 : UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1155,7 +1155,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F0R_FB_Field_Array;
@@ -1180,7 +1180,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F1R_FB_Field_Array;
@@ -1205,7 +1205,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F2R_FB_Field_Array;
@@ -1230,7 +1230,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F3R_FB_Field_Array;
@@ -1255,7 +1255,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F4R_FB_Field_Array;
@@ -1280,7 +1280,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F5R_FB_Field_Array;
@@ -1305,7 +1305,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F6R_FB_Field_Array;
@@ -1330,7 +1330,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F7R_FB_Field_Array;
@@ -1355,7 +1355,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F8R_FB_Field_Array;
@@ -1380,7 +1380,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F9R_FB_Field_Array;
@@ -1405,7 +1405,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F10R_FB_Field_Array;
@@ -1430,7 +1430,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F11R_FB_Field_Array;
@@ -1455,7 +1455,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F12R_FB_Field_Array;
@@ -1480,7 +1480,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F13R_FB_Field_Array;
@@ -1505,7 +1505,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F14R_FB_Field_Array;
@@ -1530,7 +1530,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F15R_FB_Field_Array;
@@ -1555,7 +1555,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F16R_FB_Field_Array;
@@ -1580,7 +1580,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F17R_FB_Field_Array;
@@ -1605,7 +1605,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F18R_FB_Field_Array;
@@ -1630,7 +1630,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F19R_FB_Field_Array;
@@ -1655,7 +1655,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F20R_FB_Field_Array;
@@ -1680,7 +1680,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F21R_FB_Field_Array;
@@ -1705,7 +1705,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F22R_FB_Field_Array;
@@ -1730,7 +1730,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F23R_FB_Field_Array;
@@ -1755,7 +1755,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F24R_FB_Field_Array;
@@ -1780,7 +1780,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F25R_FB_Field_Array;
@@ -1805,7 +1805,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F26R_FB_Field_Array;
@@ -1830,7 +1830,7 @@ package STM32_SVD.CAN is
       case As_Array is
          when False =>
             --  FB as a value
-            Val : HAL.UInt32;
+            Val : UInt32;
          when True =>
             --  FB as an array
             Arr : F27R_FB_Field_Array;

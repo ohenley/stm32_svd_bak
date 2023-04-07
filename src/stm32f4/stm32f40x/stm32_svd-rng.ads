@@ -4,7 +4,7 @@ pragma Restrictions (No_Elaboration_Code);
 pragma Ada_2012;
 pragma Style_Checks (Off);
 
-with HAL;
+with Beta_Types; use Beta_Types;
 with System;
 
 package STM32_SVD.RNG is
@@ -17,13 +17,13 @@ package STM32_SVD.RNG is
    --  control register
    type CR_Register is record
       --  unspecified
-      Reserved_0_1  : HAL.UInt2 := 16#0#;
+      Reserved_0_1  : UInt2 := 16#0#;
       --  Random number generator enable
       RNGEN         : Boolean := False;
       --  Interrupt enable
       IE            : Boolean := False;
       --  unspecified
-      Reserved_4_31 : HAL.UInt28 := 16#0#;
+      Reserved_4_31 : UInt28 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -44,13 +44,13 @@ package STM32_SVD.RNG is
       --  Read-only. Seed error current status
       SECS          : Boolean := False;
       --  unspecified
-      Reserved_3_4  : HAL.UInt2 := 16#0#;
+      Reserved_3_4  : UInt2 := 16#0#;
       --  Clock error interrupt status
       CEIS          : Boolean := False;
       --  Seed error interrupt status
       SEIS          : Boolean := False;
       --  unspecified
-      Reserved_7_31 : HAL.UInt25 := 16#0#;
+      Reserved_7_31 : UInt25 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -76,7 +76,7 @@ package STM32_SVD.RNG is
       --  status register
       SR : aliased SR_Register;
       --  data register
-      DR : aliased HAL.UInt32;
+      DR : aliased UInt32;
    end record
      with Volatile;
 
