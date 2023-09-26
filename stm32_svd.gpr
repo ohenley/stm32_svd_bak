@@ -21,6 +21,10 @@ project Stm32_Svd is
       when "stm32f407" =>
          SVD_Src_Dirs := SVD_Src_Dirs & ("src/stm32f4/stm32f40x",
                                          "src/stm32f4");
+      when "stm32f746x" =>
+         SVD_Src_Dirs := SVD_Src_Dirs & (
+                                         "src/stm32f7/stm32f7x",
+                                         "src/stm32f7");
       when others => null;
    end case;
 
